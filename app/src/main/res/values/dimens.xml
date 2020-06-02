@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="button_height_small">40dp</dimen>
+
+    <dimen name="button_height">57dp</dimen>
+    <dimen name="logo_height">150dp</dimen>
+
+    <!-- font sizes -->
+
+    <dimen name="font_extralarge">32sp</dimen>
+    <dimen name="font_input">22sp</dimen>
+    <dimen name="font_label">16sp</dimen>
+    <dimen name="font_button_holo">20sp</dimen>
+    <dimen name="font_large">22sp</dimen>
+    <dimen name="font_medium">20sp</dimen>
+    <dimen name="font_small">18sp</dimen>
+    <dimen name="font_extrasmall">14sp</dimen>
+
+    <!-- todo sizes used in create profile module from here-->
+
+    <dimen name="font_create_profile">32sp</dimen>
+    <dimen name="font_et_inputs">25sp</dimen>
+
+    <!--todo ..... till here-->
+
+    <dimen name="font_pharmacy_name">34sp</dimen>
+
+
+    <dimen name="home_info_font">18sp</dimen>
+    <dimen name="home_info_font_label">13sp</dimen>
+    <dimen name="font_title">26sp</dimen>
+    <!-- todo remove this item change to font_label -->
+    <dimen name="font_label2">16sp</dimen>
+    <dimen name="custom_toolbar_height">56dp</dimen>
+
+    <dimen name="font_button">18sp</dimen>
+    <dimen name="font_menu">18sp</dimen>
+    <dimen name="font_extra_small">14sp</dimen>
+    <dimen name="height_consult_icon">70dp</dimen>
+
+    <dimen name="button_margin_h">50dp</dimen>
+    <dimen name="font_inputsim">20sp</dimen>
+    <dimen name="top_bar_logo_size">60dp</dimen>
+
+    <dimen name="local_video_view_w">112dp</dimen>
+    <dimen name="local_video_view_h">200dp</dimen>
+    <dimen name="consult_margin_outter">15dp</dimen>
+    <dimen name="font_relatives">18sp</dimen>
+
+    <dimen name="choose_doc_h">20dp</dimen>
+    <dimen name="choose_doc_photo_size">80dp</dimen>
+    <dimen name="ic_treatment_size">40dp</dimen>
+    <dimen name="choose_doc_margin">8dp</dimen>
+    <dimen name="confirm_treatment_padding">5dp</dimen>
+    <dimen name="font_treatment_small">13sp</dimen>
+    <dimen name="button_height_new">50dp</dimen>
+    <dimen name="spinner_icon_w">20dp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
+
+    <dimen name="consult_margin_v">10dp</dimen>
+    <dimen name="home_info_margin">20dp</dimen>
+    <dimen name="home_info_label_margin">5dp</dimen>
+    <dimen name="font_plus_sign">25sp</dimen>
+    <dimen name="icon_size_incoming_call">50dp</dimen>
+    <dimen name="margin_incoming_call">30dp</dimen>
+    <dimen name="hui_fitnes_icon">90dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+
+</resources>

@@ -1,0 +1,40 @@
+{
+    "project_info": {
+        "project_number": "302502072227",
+        "firebase_url": "https://car-augmented-reality.firebaseio.com",
+        "project_id": "car-augmented-reality",
+        "storage_bucket": "car-augmented-reality.appspot.com"
+    },
+    "client": [
+        {
+            "client_info": {
+                "mobilesdk_app_id": "1:302502072227:android:9ab10c3d2a1976b5f01416",
+                "android_client_info": {
+                    "package_name": "com.exercise.caraugmentedreality"
+                }
+            },
+            "oauth_client": [
+                {
+                    "client_id": "302502072227-fdor3khpntpolu7qfiegjrg68d6lhr5m.apps.googleusercontent.com",
+                    "client_type": 3
+                }
+            ],
+            "api_key": [
+                {
+                    "current_key": "AIzaSyAiVRsTyVJ1XcwSaYlkCthGJtx0eEDNlXs"
+                }
+            ],
+            "services": {
+                "appinvite_service": {
+                    "other_platform_oauth_client": [
+                        {
+                            "client_id": "302502072227-fdor3khpntpolu7qfiegjrg68d6lhr5m.apps.googleusercontent.com",
+                            "client_type": 3
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "configuration_version": "1"
+}

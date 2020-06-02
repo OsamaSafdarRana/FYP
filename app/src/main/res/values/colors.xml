@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <color name="colorPrimary">#446AF3</color>
+    <color name="colorPrimaryDark">#1967dbd4</color>
+    <color name="colorAccent">#ffffff</color>
+    <color name="colorhelp">#2096DB</color>
+    <color name="colorbg">#7ACEFF</color>
+    <color name="colorpb">#2096DB</color>
+    <color name="gradientTop">#67DBD4</color>
+    <color name="gradientBottom">#446AF3</color>
+    <color name="background_color">#456cf3</color>
+    <color name="colorText">#ffffff</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorBlackLight">#292929</color>
+    <color name="colorTextBlue">#4264f5</color>
+    <color name="colorTextTeall">#67dbd4</color>
+    <color name="colorTextGrey">#626262</color>
+    <color name="colorTextPurple">#6c42f5</color>
+    <color name="colorTextPrimaryHint">#a0446af3</color>
+    <color name="colorTextPrimary">#446AF3</color>
+    <color name="colorTextInverse">#a0ffffff</color>
+    <color name="colorTextHint">#D3D3D3</color>
+    <color name="textWelcomeDetails">#64C2A0</color>
+    <color name="transparent">#00000000</color>
+    <color name="curtain_color">#19ffffff</color>
+    <color name="colorTextRed">#f5424a</color>
+    <color name="colorPink">#84ff40b6</color>
+    <color name="colorTeal">#08BBB9</color>
+    <color name="colorRed">#e6444b</color>
+    <color name="colorGreen">#05bbb9</color>
+    <color name="notificationRed">#f1101a</color>
+    <color name="colorDialogBackground">#96000000</color>
+
+</resources>

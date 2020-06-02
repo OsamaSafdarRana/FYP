@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_color"
+    tools:context=".View.Fragment.ShowHistoryFragment">
+
+    <ImageButton
+        android:id="@+id/bt_back"
+        android:layout_width="40sp"
+        android:layout_height="40sp"
+        android:clickable="true"
+        android:layout_marginTop="30sp"
+        android:layout_toStartOf="@id/iv_car"
+        android:layout_marginEnd="60sp"
+        android:background="@color/transparent"
+        android:src="@drawable/ic_back"/>
+
+    <ImageView
+        android:id="@+id/iv_car"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="30sp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:src="@drawable/car"/>
+
+    <ImageButton
+        android:id="@+id/bt_notification"
+        android:layout_width="40sp"
+        android:layout_height="40sp"
+        android:layout_marginTop="30sp"
+        android:layout_toEndOf="@id/iv_car"
+        android:layout_marginStart="60sp"
+        android:background="@color/transparent"
+        android:src="@drawable/notification"/>
+
+    <TextView
+        android:id="@+id/tv_choose_option"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_car"
+        android:layout_marginTop="50sp"
+        android:fontFamily="@font/bahnschrift"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:text="@string/tv_show_history"
+        android:textSize="@dimen/font_large"
+        android:layout_centerHorizontal="true"/>
+
+    <ScrollView
+        android:id="@+id/sv_et"
+        android:layout_below="@id/tv_choose_option"
+        android:layout_marginTop="30sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_mileage"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginStart="20sp"
+                android:layout_marginEnd="20sp"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:background="@drawable/bg_spinner"
+                android:textSize="@dimen/font_medium"
+                android:textColor="@color/colorBlack" />
+
+            <TextView
+                android:id="@+id/tv_av_drive"
+                android:layout_width="match_parent"
+                android:layout_height="60sp"
+                android:layout_marginStart="20sp"
+                android:layout_marginEnd="20sp"
+                android:textSize="@dimen/font_medium"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:background="@drawable/bg_spinner"
+                android:layout_marginTop="10sp"
+                android:textColor="@color/colorBlack"
+                android:layout_below="@+id/tv_mileage" />
+
+            <TextView
+                android:id="@+id/tv_brake_oil"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginStart="20sp"
+                android:layout_marginEnd="20sp"
+                android:layout_marginTop="10sp"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:background="@drawable/bg_spinner"
+                android:textSize="@dimen/font_medium"
+                android:textColor="@color/colorBlack"
+                android:layout_below="@+id/tv_av_drive"/>
+
+            <TextView
+                android:id="@+id/tv_engine_coolant"
+                android:layout_width="match_parent"
+                android:layout_height="60sp"
+                android:layout_marginStart="20sp"
+                android:layout_marginEnd="20sp"
+                android:textSize="@dimen/font_medium"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:background="@drawable/bg_spinner"
+                android:layout_marginTop="10sp"
+                android:textColor="@color/colorBlack"
+                android:layout_below="@id/tv_brake_oil"/>
+
+            <TextView
+                android:id="@+id/tv_engine_oil"
+                android:layout_width="match_parent"
+                android:layout_height="60sp"
+                android:layout_marginStart="20sp"
+                android:layout_marginEnd="20sp"
+                android:textSize="@dimen/font_medium"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:background="@drawable/bg_spinner"
+                android:layout_marginTop="10sp"
+                android:textColor="@color/colorBlack"
+                android:layout_below="@id/tv_engine_coolant"/>
+
+            <TextView
+                android:id="@+id/tv_radiator_fluid"
+                android:layout_width="match_parent"
+                android:layout_height="60sp"
+                android:layout_marginStart="20sp"
+                android:layout_marginEnd="20sp"
+                android:textSize="@dimen/font_medium"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:background="@drawable/bg_spinner"
+                android:layout_marginTop="10sp"
+                android:textColor="@color/colorBlack"
+                android:layout_below="@id/tv_engine_oil"/>
+
+            <TextView
+                android:id="@+id/tv_transmission_fluid"
+                android:layout_width="match_parent"
+                android:layout_height="60sp"
+                android:layout_marginStart="20sp"
+                android:layout_marginEnd="20sp"
+                android:layout_marginTop="10sp"
+                android:textSize="@dimen/font_medium"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:background="@drawable/bg_spinner"
+                android:textColor="@color/colorBlack"
+                android:layout_below="@id/tv_radiator_fluid"/>
+
+            <TextView
+                android:id="@+id/tv_oil_running"
+                android:layout_width="match_parent"
+                android:layout_height="60sp"
+                android:textAlignment="center"
+                android:layout_marginStart="20sp"
+                android:gravity="center"
+                android:layout_marginEnd="20sp"
+                android:layout_marginTop="10sp"
+                android:background="@drawable/bg_spinner"
+                android:textSize="@dimen/font_medium"
+                android:textColor="@color/colorBlack"
+                android:layout_below="@id/tv_transmission_fluid"/>
+
+            <TextView
+                android:id="@+id/tv_oil_thickness"
+                android:layout_width="match_parent"
+                android:layout_height="60sp"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:layout_marginStart="20sp"
+                android:layout_marginEnd="20sp"
+                android:layout_marginTop="10sp"
+                android:background="@drawable/bg_spinner"
+                android:textSize="@dimen/font_medium"
+                android:textColor="@color/colorBlack"
+                android:layout_below="@id/tv_oil_running"/>
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

@@ -1,0 +1,44 @@
+<resources>
+
+    <style name="NoActionBar" parent="Theme.AppCompat.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="ProgressBarStyle">
+        <item name="colorAccent">@color/colorpb</item>
+    </style>
+
+    <style name="DialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">@drawable/background_color</item>
+    </style>
+
+    <style name="ButtonStyle">
+        <item name="android:background">@drawable/button</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">@dimen/font_button</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_height">@dimen/button_height</item>
+    </style>
+
+    <style name="EditTextStyle">
+        <item name="android:background">@drawable/edit_text</item>
+        <item name="android:textSize">@dimen/font_button</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textColorHint">@color/colorTextHint</item>
+    </style>
+
+    <style name="SpinnerStyle">
+        <item name="android:background">@drawable/spinner</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">@dimen/font_medium</item>
+        <item name="android:dropDownSelector">@color/colorBlack</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:color">@color/colorBlack</item>
+        <item name="android:layout_height">@dimen/button_height</item>
+    </style>
+
+</resources>

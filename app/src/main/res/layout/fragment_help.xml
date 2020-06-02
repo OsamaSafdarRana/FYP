@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_color"
+    tools:context=".View.Fragment.HelpFragment">
+
+    <ImageView
+        android:id="@+id/iv_car"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="30sp"
+        android:clickable="true"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:src="@drawable/car"/>
+
+    <TextView
+        android:id="@+id/tv_help"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_car"
+        android:layout_marginTop="60sp"
+        android:fontFamily="@font/bahnschrift"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textSize="@dimen/font_large"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/bt_continue"
+        android:layout_width="190sp"
+        android:layout_height="56sp"
+        android:textAllCaps="false"
+        android:text="@string/text_continue"
+        android:textStyle="bold"
+        android:layout_marginBottom="30sp"
+        android:layout_alignParentBottom="true"
+        android:fontFamily="@font/bahnschrift"
+        android:textColor="@color/colorBlack"
+        style="@style/ButtonStyle"/>
+
+</RelativeLayout>
