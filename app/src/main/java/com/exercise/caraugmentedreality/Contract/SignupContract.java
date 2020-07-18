@@ -5,9 +5,9 @@ public interface SignupContract {
     interface View {
         void showProgress();
         void showMessage(String message);
-        void moveToHomeScreen();
         void moveToCarRegistration();
         void verifyEmail();
+        void moveToSignin();
         void registerUser();
     }
     interface Presenter {

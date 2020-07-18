@@ -1,44 +1,65 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Car Augmented Reality</string>
     <string name="tv_choose_option">Kindly choose from\nthe following options</string>
     <string name="tv_select_option">Kindly select from\nthe following options</string>
     <string name="tv_addcar">Add (Another) Car</string>
     <string name="tv_select_car">Kindly select from\nthe following cars</string>
-    <string name="tv_enter_details">Kindly enter the\ndetails of your car</string>
-    <string name="tv_health_score">Health Score of your car on the\nbasis of Fluids and Oils servicing date\nis:</string>
-    <string name="tv_add_history">When was the last time you\ngot the following things changed/serviced</string>
+    <string name="tv_enter_details">Lets Setup your Car Profile!</string>
+    <string name="text_description">Details of car will be fetched from history.</string>
+    <string name="text_clickhere">If you want to view history. Click Here</string>
+    <string name="tv_health_score">Health Score of your car is:</string>
+    <string name="tv_add_history">Enter the details for the \nfollowing things changed/serviced</string>
     <string name="tv_show_history">Here you can check the\nmaintenance history \nof your car</string>
     <string name="tv_answer">Kindly answer\nthe questions</string>
     <string name="text_troubleshooting">Troubleshooting</string>
-    <string name="text_interior">Interior</string>
-    <string name="text_login">Kindly enter your details to\nSign In</string>
-    <string name="text_register">Kindly enter your details to\nRegister</string>
-    <string name="text_email">Email ID</string>
+    <string name="text_interior">Interior Car Guide</string>
+    <string name="text_login">Welcome Back!</string>
+    <string name="text_logoutt">Log Out</string>
+    <string name="text_register">Lets Get You Started!</string>
+    <string name="text_email">\tEmail ID</string>
+    <string name="text_name">\tName</string>
+    <string name="text_home">Home</string>
+    <string name="text_dashboard">Dashboard</string>
+    <string name="text_carguide">Car Guide</string>
+    <string name="text_profile">Profile</string>
     <string name="text_reg_no">Registration Number</string>
     <string name="text_manufacturer">Manufacturer</string>
     <string name="text_model">Model</string>
     <string name="text_year">Year</string>
+    <string name="text_variant">Variant</string>
+    <string name="hint_reg_no">\tRegistration Number</string>
+    <string name="hint_manufacturer">\tManufacturer</string>
+    <string name="hint_model">\tModel</string>
+    <string name="hint_year">\tYear</string>
+    <string name="hint_variant">\tVariant</string>
     <string name="text_hint">\tType your answer</string>
     <string name="text_hint2">\tSelect from calender</string>
-    <string name="text_variant">Variant</string>
     <string name="text_notification">Notifications</string>
     <string name="text_menu">Select any option from\nMenu</string>
     <string name="text_username">User Name</string>
-    <string name="text_password">Password</string>
-    <string name="text_mileage">Mileage of your car</string>
-    <string name="text_av_drive">Average drive in a week</string>
+    <string name="text_password">\tPassword</string>
+    <string name="text_confirmpassword">\tConfirm Password</string>
+    <string name="text_mileage">Speedometer reading</string>
+    <string name="text_reminder">Reminders</string>
+    <string name="text_remind">Reminder</string>
+    <string name="text_setreminder">Set Reminder</string>
+    <string name="text_viewreminder">View Reminder</string>
+    <string name="text_mileage2">Mileage at which engine oil was changed/serviced</string>
+    <string name="text_av_drive">Daily Mileage</string>
     <string name="text_oil_thickness">Engine Oil Thickness</string>
     <string name="text_oil_running">Engine Oil Running</string>
     <string name="text_transmission_fluid">Transmission Fluid</string>
     <string name="text_radiator_fluid">Radiator Fluid</string>
     <string name="text_engine_oil">Engine Oil</string>
+    <string name="text_engine_oil2">Date (Engine Oil Change)</string>
     <string name="text_engine_coolant">Engine Coolant</string>
     <string name="text_brake_fluid">Brake Fluid</string>
     <string name="text_problem">Dear User, according to our calculation the problem you are facing is:</string>
     <string name="text_problem_radiator">-Due to the depletion of water in the radiator, your engine is running hot,
         which is causing this problem</string>
     <string name="text_implementation_statement">Would you like to implemenent a solution?</string>
-    <string name="text_exterior">Exterior</string>
+    <string name="text_exterior">Exterior Car Guide</string>
+    <string name="text_engine">Engine Bay Guide</string>
     <string name="text_battery">The battery light indicates a battery charging problem. If the battery light comes on and stays on
         while you are driving, the most common cause is a broken alternator belt. Total failure of the alternator is another
         possibility. But you want to get to the garage before the battery fails and your car dies.</string>
@@ -67,7 +88,128 @@
         safety. It limits door control to outside handle only.\n- Fuel Tank Cap: It is usually on left side of right hand drive cars, which is controlled from inside
         the car. Refueling is done through here.\n- Side Indicators: Side indicators are located on front fender usually or on side mirrors. Used for side by car to get
         to know that you are going to turn.\n- Side Mirrors: These are used to look for traffic on each side of road.</string>
-    <string name="text_enginebay">Engine Bay</string>
+    <string name="text_enginebay">Engine Bay Guide</string>
+    <string name="text_radiator_details">As your car is running but it is heating up. And according to you, there is a steam from
+        Radaitor. Here are some tips before doing any action:\n1- Radiator must be hot and pressurized so do not open it until it cools down.
+        \n2- Check engine coolant bottle fluid and if it is below level, fill it first.\n3- For quick cool down of radiator throw some water over it.</string>
+    <string name="text_battery_details">As your car is not starting up but car is picking self, which means self is working fine.
+        The problem seems to be in battery. Here are few things which you need to check when you open the app:\n1- Terminals of battery
+        are connected properly and tightly or not.\n2- If Battery fluid level is below the mark, then you can add water.
+        \n3- If none of this works and your car has manual transmission then try for push start(Put your car in 2nd gear with clutch pressed, "
+        after some speed release clutch suddenly and press accelarator.)\n4- For Automatic transmission and in case of push start failure,
+        connect your car battery to any charged battery through wires(Remember: Positive for postive terminal and negative for negative.)</string>
+    <string name="text_head_details">"As your car is running but it is heating up. And according to you, there is a steam from
+        Engine Head. Which means your car might be running short of oil, this can be caused by the leakage from the bottom of
+        Engine. You can also check oil level on Engine oil guage(Oil Dipstick) by pulling it out.</string>
+    <string name="text_fueltank_details">"As your car is staring for a second and then turning off and fuel guage is on \"E\". Which
+        means car has no fuel in it. Please reach nearby petrol pump for refill."</string>
+    <string name="text_fuelpump_details">"As your car is staring for a second and then turning off and fuel guage is on not on \"E\". Which
+        means car is either facing issue with fuel pump(fuel injection) or youe fuel needle is not working properly. Please contact nearby mechanic.</string>
+    <string name="text_fuel_details">"As your car is staring for a second and then turning off. Which means either car has no fuel
+        in it or fuel injection is issue. Please reach nearby petrol pump for refill or contact mechanic.</string>
+    <string name="text_missing_details">"As your car is running and not heating up but running with jerks. Which means car is doing missing,
+        reasons can be:\n1- Some fuse(s) not working properly, needs to be changed.\n2- Some electric wires might be short.</string>
+    <string name="text_notbasic_details">"As your car is not facing problem in any of the below mentioned problem. So this is not a basic problem:
+        \n1- Battery\n2- Engine head heating\n3- Radiator Heating\n4- Missing\n5- Fuel problem</string>
+    <string name="text_ext1">1- Headlights/Headlamp</string>
+    <string name="text_ext2">2- Hood/Bonnet</string>
+    <string name="text_ext3">3- Side-View Mirrors</string>
+    <string name="text_ext4">4 - Windscreen/Windshield</string>
+    <string name="text_ext5">5 - Tire/Tyre</string>
+    <string name="text_ext6">6 - Alloy Wheel</string>
+    <string name="text_ext7">7 - Door</string>
+    <string name="text_ext8">8- Door Handle</string>
+    <string name="text_ext9">9- Fuel Door</string>
+    <string name="text_ext10">10- Tail light/Tail lamp</string>
+    <string name="text_ext11">11- Trunk/Boot</string>
+    <string name="text_ext12">12- Antenna</string>
+    <string name="text_ext13">10- Tail light/Tail lamp</string>
+    <string name="text_ext14">10- Tail light/Tail lamp</string>
+    <string name="text_ext1_details">A headlamp is a lamp attached to the front of a vehicle to illuminate the road ahead.
+        Headlamps are also often called headlights.</string>
+    <string name="text_ext2_details">The hood or bonnet is the hinged cover over the engine of motor vehicles that allows
+        access to the engine compartment.</string>
+    <string name="text_ext3_details">A side-view mirror, often called side mirror, is a mirror placed on the exterior of
+        motor vehicles for the purposes of helping the driver
+        see areas behind and to the sides of the vehicle, outside the driver peripheral vision.</string>
+    <string name="text_ext4_details">The windshield or windscreen of a car is the front window, which provides visibility
+        while protecting occupants from the elements.</string>
+    <string name="text_ext6_details">Alloy wheels are wheels that are made from an alloy of aluminium or magnesium. Alloys
+        are mixtures of a metal and other elements. They generally provide greater strength over pure metals,
+        which are usually much softer and more ductile.</string>
+    <string name="text_ext5_details">A tire or tyre is a ring-shaped component that surrounds a wheel rim to transfer a
+        vehicle load from the axle through the wheel to the ground and to provide traction on the surface over which the wheel travels.</string>
+    <string name="text_ext7_details">A car door is a type of door, typically hinged, but sometimes attached by other mechanisms
+        such as tracks, in front of an opening which is used for entering and exiting a vehicle.</string>
+    <string name="text_ext8_details">A door handle or door knob is a mechanism used to open or close a door. Car door
+        handles may protrude from the vehicle exterior surface or be streamlined into the vehicle contour. In some automobiles,
+        especially luxury vehicles.</string>
+    <string name="text_ext9_details">The fuel door of the car allows the user to gain access to the fuel cap, which has to
+        be removed in order to refuel the car.</string>
+    <string name="text_ext10_details">Tail lights serve the purpose of indicating the drivers behind about the status of
+        the car, if the car is breaking, if it is reversing or if its turning.</string>
+    <string name="text_ext11_details">The trunk, boot of a car is the vehicle main storage or cargo compartment.</string>
+    <string name="text_ext12_details">The antenna on your car is built to pick up the magnetic energy of the radio waves
+        and send it to the car radio receiver, which in turn isolates and amplifies the radio waves you want to listen to.</string>
+    <string name="text_int1">1- Steering Wheel</string>
+    <string name="text_int2">2- Fusebox</string>
+    <string name="text_int3">3- Power Window Control</string>
+    <string name="text_int4">4- Side-view Mirror Control</string>
+    <string name="text_int5">5- Brake Pedal</string>
+    <string name="text_int6">6- Accelerator/Throttle</string>
+    <string name="text_int7">7- Gear Shifter/Stick</string>
+    <string name="text_int8">8- Gauge Cluster</string>
+    <string name="text_int9">9- Infotainment System</string>
+    <string name="text_int10">10- Car Air-Conditioning</string>
+    <string name="text_int11">11- E-Brake/Hand Brake</string>
+    <string name="text_int12">12- Glove Compartment/Glovebox</string>
+    <string name="text_int1_details">A steering wheel is a type of steering control in vehicles.Steering wheels are used
+        in most modern land vehicles, including all mass-production automobiles, as well as buses, light and heavy trucks, and tractors.</string>
+    <string name="text_int2_details">This contains a set of fuses, fuses are used to protect the wiring and electrical equipment for vehicles. They
+        are generally rated for circuits no higher than 32 volts direct current, but some types are rated for 42-volt electrical systems.</string>
+    <string name="text_int3_details">Power windows or electric windows are automobile windows which can be raised and lowered by pressing a button or
+        switch.</string>
+    <string name="text_int4_details">A power side-view mirror is equipped with electrical means for vertical and horizontal adjustment from
+        the inside of the automobile.</string>
+    <string name="text_int5_details">A brake is a mechanical device that inhibits motion by absorbing energy from a moving system. It is used for slowing or
+        stopping a moving vehicle, the brake pedal is used to apply brakes.</string>
+    <string name="text_int6_details">The throttle, which controls fuel and air supply to the engine is normally the right-most floor pedal. It has a
+        fail-safe design – a spring, which returns it to the idle position when not depressed by the driver.</string>
+    <string name="text_int7_details">A gear stick is a metal lever attached to the shift assembly in a manual transmission-equipped automobile and is used to change gears.
+        The gear stick shown in the image is one that belongs to an automatic transmission.</string>
+    <string name="text_int8_details">Gauge clusters refer to the collection of driving instruments behind the steering wheel, including but
+        not limited to the speedometer, tachometer and fuel gauge.</string>
+    <string name="text_int9_details">Infotainment systems are a collection of hardware and software in automobiles that provides audio or video entertainment. In car entertainment originated with car audio systems that consisted of radios and cassette or CD players, and now includes automotive navigation systems, video players, USB and Bluetooth connectivity, Carputers, in-car internet, and WiFi.
+        The one shown in the image provided represents the basic representation of an infotainment system consisting of a radio and a CD player.</string>
+    <string name="text_int10_details">Automobile air conditioning, also referred tp as A/C, are systems that are used to cool the air in a
+        vehicle.</string>
+    <string name="text_int11_details">In road vehicles, the parking brake, also known as a hand brake or emergency brake (e-brake), is a mechanism used to keep the vehicle securely
+        motionless when parked. It is also used to help perform an emergency stop should the main hydraulic brakes fail.</string>
+    <string name="text_int12_details">A glove compartment or glovebox is a compartment built into the dashboard of an automobile, located over the front-seat passenger footwell, and often used for miscellaneous storage. The name derives from the original purpose of the
+        compartment, to store driving gloves.</string>
+    <string name="text_eng1">1- Radiator Cap</string>
+    <string name="text_eng2">2- Windscreen Washer Reservoir</string>
+    <string name="text_eng3">3- Oil Dipstick</string>
+    <string name="text_eng4">4- Engine</string>
+    <string name="text_eng5">5- Engine Oil Cap</string>
+    <string name="text_eng6">6- Break Fluid Reservoir</string>
+    <string name="text_eng7">7- Air Filter Box</string>
+    <string name="text_eng8">8- Battery</string>
+    <string name="text_eng1_details">Radiator cap is removed to add water to the radiator. The purpose of the radiator is to make sure
+        that the cars engine does not heat up unnecessarily.</string>
+    <string name="text_eng2_details">The windscreen washer reservoir contains fluids that are sprayed on to the
+        windscreen to keep it clean.</string>
+    <string name="text_eng3_details">The oil dipstick is used to check the level of engine oil in the engine.</string>
+    <string name="text_eng4_details">An engine or motor is a machine designed to convert one form of energy into mechanical energy. Heat engines, like the
+        internal combustion engine, burn a fuel to create heat which is then used to do work.</string>
+    <string name="text_eng5_details">The engine oil cap is to be removed to be able to add oil to the engine of the car. Motor oil is used for lubrication of internal combustion engines.
+        The main function of motor oil is to reduce friction and wear on moving parts and to clean the engine from sludge.</string>
+    <string name="text_eng6_details">The break fluid reservoir is used to add break fluid. Brake fluid is a type of hydraulic fluid used in hydraulic brake applications in cars. It is used
+        to transfer force into pressure, and to amplify braking force.</string>
+    <string name="text_eng7_details">The air filter box contains the air filter which is used to make sure that filtered and clean air goes into
+        the cabin of the car.</string>
+    <string name="text_eng8_details">An automotive battery is a rechargeable battery that supplies electrical current to a motor vehicle. Its main purpose is to feed the starter, which
+        starts the engine.</string>
     <string name="text_q1">Is your car turning on?</string>
     <string name="text_q2">Does your car support OBD-2?</string>
     <string name="text_q3">Do you have OBD-2 device connected with your car?</string>
@@ -76,24 +218,43 @@
     <string name="text_q6">Do you feel throttle getting heavy?</string>
     <string name="text_a1">Yes</string>
     <string name="text_a2">No</string>
+    <string name="text_questionnaire">Questionnaire</string>
+    <string name="text_obd2">OBD-2</string>
     <string name="text_journal">Car Journal</string>
     <string name="text_guide">Guide</string>
-    <string name="text_implement_solution">Go to Solution</string>
+    <string name="text_implement_solution">Scan</string>
     <string name="text_continue">Continue</string>
-    <string name="text_signin">Sign In</string>
+    <string name="text_addreminder">Add Reminder</string>
+    <string name="text_signin">\tSign In</string>
+    <string name="text_fb">faacebook</string>
+    <string name="text_google">Google</string>
     <string name="text_account">Does not have an Account?</string>
+    <string name="text_alreadyaccount">Already have an account?</string>
+    <string name="text_connect">Or connect using</string>
     <string name="text_ver_email">Please Verify your Email.</string>
-    <string name="text_signup">Sign Up</string>
+    <string name="text_signup">\tSign Up</string>
     <string name="text_update">Update History</string>
     <string name="text_help">?</string>
     <string name="text_help1">How to write a problem?</string>
     <string name="text_or">Or</string>
-    <string name="text_write">Please explain the problems in your own words.</string>
-    <string name="text_write_yourself">Write Yourself</string>
+    <string name="text_write">Explain the problem</string>
+    <string name="text_write_yourself">Type your Problem</string>
+    <string name="text_solvequestionnaire">Use the Questionnaire</string>
     <string name="txt_prob">Write in your own words</string>
     <string name="text_add_history">Add History</string>
     <string name="text_show_history">Show History</string>
+    <string name="text_add_reminder">Add Reminder</string>
+    <string name="text_show_reminder">Show Reminders</string>
     <string name="text_health">Health</string>
+    <string name="text_service">Service</string>
+    <string name="text_typeservice">Type of Service</string>
+    <string name="text_km">KMs</string>
+    <string name="text_notes">Notes</string>
+    <string name="text_enternotes">Enter the details</string>
+    <string name="text_enterkm">Enter km for service</string>
+    <string name="text_date">Date</string>
+    <string name="text_healthscore">Health Score</string>
+    <string name="text_clickformula">Formula through which health score has been calculated.</string>
 
     <string-array name="answers">
         <item>Choose an answer</item>
@@ -105,6 +266,14 @@
         <item>Honda</item>
         <item>Suzuki</item>
         <item>Toyota</item>
+    </string-array>
+
+    <string-array name="servicetype">
+        <item>Oil Change</item>
+        <item>AC</item>
+        <item>Air Conditioner</item>
+        <item>Tuning</item>
+        <item>Brake service</item>
     </string-array>
 
     <string-array name="models">
@@ -121,8 +290,13 @@
     <string-array name="variants">
         <item>EXi 1.5</item>
         <item>Vti 1.6</item>
+        <item>Oriel 1.6</item>
+        <item>iVtec 1.8</item>
+        <item>Oriel 1.8</item>
         <item>Xli 1.3</item>
         <item>Gli 1.3</item>
+        <item>vVTI 1.0</item>
+        <item>vVTI 1.3</item>
         <item>Altis 1.6</item>
         <item>Grande 1.8</item>
         <item>LXI</item>
@@ -142,12 +316,119 @@
 
     <string-array name="oil_thickness">
         <item>Tap to select</item>
-        <item>20W-50</item>
-        <item>10W-40</item>
-        <item>5W-30</item>
-        <item>0W-20</item>
+        <item>20W-50 (3000/4000)</item>
+        <item>10W-40 (5000)</item>
+        <item>5W-30 (9000)</item>
+        <item>0W-20 (9000)</item>
     </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="action_clear_codes">Clear Codes</string>
+    <string name="notification_action">Tap to open OBD-Reader</string>
+    <string name="command_list">Choose a command</string>
+    <string name="service_starting">Starting OBD connection..</string>
+    <string name="service_started">OBD connection has started.</string>
+    <string name="service_stopped">OBD connection has stopped.</string>
+    <string name="notification_label">Tap to open OBD-Reader.</string>
+    <string name="title_activity_trouble_codes">Trouble Codes</string>
+    <string name="pref_upload_category_title">Data Upload</string>
+    <string name="pref_upload_category" translatable="false">upload_category</string>
+    <string name="title_activity_trips_list">TripsList</string>
+    <string name="menu_trip_list">Trips</string>
+    <string name="menu_item_trip_delete">Delete</string>
+    <string name="pref_gps_category" translatable="false">gps_category</string>
+    <string name="dialog_loading_title">Loading…</string>
+    <string name="dialog_loading_body">Loading application View, please wait…</string>
+    <string name="menu_start_live_data">Start Live Data</string>
+    <string name="menu_stop_live_data">Stop Live Data</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_get_dtc">Get DTC</string>
+    <string name="text_gps" translatable="false">GPS</string>
+    <string name="text_obd" translatable="false">OBD</string>
+    <string name="text_bluetooth" translatable="false">Bluetooth</string>
+    <string name="text_orientation_default" translatable="false">N</string>
+    <string name="text_zero" translatable="false">0</string>
+    <string name="text_consumption_default" translatable="false">0l/100km</string>
+    <string name="text_runtime_default" translatable="false">00:00:00</string>
+    <string name="title_pref_obd">OBD Preferences</string>
+    <string name="title_pref_commands">OBD Commands</string>
+    <string name="title_pref_bluetooth" translatable="false">Bluetooth</string>
+    <string name="title_pref_gps" translatable="false">GPS</string>
+    <string name="text_no_bluetooth_id">Sorry, your device doesn\'t support Bluetooth</string>
+    <string name="text_bluetooth_disabled">You have Bluetooth disabled. Please enable it (using Mock service)</string>
+    <string name="text_bluetooth_nodevice">No Bluetooth device selected</string>
+    <string name="text_bluetooth_error_connecting">Cannot connect to bluetooth device!</string>
+    <string name="text_no_orientation_sensor">Orientation sensor missing?</string>
+    <string name="text_no_gps_support">Sorry, your device doesn\'t support or has disabled GPS.</string>
+    <string name="text_save_trip_not_available">Sorry, trip will not be saved.</string>
+    <string name="text_obd_command_failure">OBD command failure!</string>
+    <string name="text_dtc_no_data">No DTC stored</string>
+    <string name="status_no_bluetooth_id">unavailable</string>
+    <string name="status_bluetooth_disabled">disabled</string>
+    <string name="status_bluetooth_ok">ready</string>
+    <string name="status_bluetooth_connecting">connecting&#8230;</string>
+    <string name="status_bluetooth_connected">connected</string>
+    <string name="status_bluetooth_error_connecting">connection failed</string>
+    <string name="status_gps_fix">fix acquired</string>
+    <string name="status_gps_no_fix">fix not acquired</string>
+    <string name="status_gps_started">started</string>
+    <string name="status_gps_stopped">stopped</string>
+    <string name="status_gps_ready">ready</string>
+    <string name="status_gps_no_support">not available</string>
+    <string name="status_gps_not_used">not used</string>
+    <string name="status_obd_ready">OK</string>
+    <string name="status_obd_data">receiving data&#8230;</string>
+    <string name="status_obd_disconnected">disconnected</string>
+    <string name="status_obd_no_support">NA</string>
+    <string name="pref_upload_title">Enable Data Upload</string>
+    <string name="pref_upload_summaryOff">Enable http data upload</string>
+    <string name="pref_upload_summaryOn">Disable http data upload</string>
+    <string name="pref_upload_url_title">Upload URL</string>
+    <string name="pref_upload_url_summary">POST URL that will accept real-time data</string>
+    <string name="pref_vehicle_id_title">Vehicle ID</string>
+    <string name="pref_vehicle_id_summary">Optional unique id of this vehicle, used with uploaded data</string>
+    <string name="pref_bluetooth_title">Enable Bluetooth</string>
+    <string name="pref_bluetooth_summaryOff">Turn on Bluetooth</string>
+    <string name="pref_bluetooth_summaryOn">Turn off Bluetooth</string>
+    <string name="pref_bluetooth_list_devices_summary">List of paired bluetooth devices.</string>
+    <string name="pref_bluetooth_list_devices_title">Bluetooth Devices</string>
+    <string name="pref_gps_category_title">Enable GPS</string>
+    <string name="pref_gps_category_summaryOff">Turn on GPS</string>
+    <string name="pref_gps_category_summaryOn">Turn off GPS</string>
+    <string name="pref_gps_update_period_title">Update Period in Seconds</string>
+    <string name="pref_gps_update_period_summary">The length of time between querying new position in seconds</string>
+    <string name="pref_gps_distance_period_title">Update Period in Meters</string>
+    <string name="pref_gps_distance_period_summary">Min Distance between location updates, in meters</string>
+    <string name="pref_obd_protocols_title">OBD Protocol</string>
+    <string name="pref_obd_protocols_summary">Select OBD Protocol to use</string>
+    <string name="pref_imperial_units_title">Imperial Units</string>
+    <string name="pref_imperial_units_summaryOff">Enable imperial units</string>
+    <string name="pref_imperial_units_summaryOn">Go back to metric units</string>
+    <string name="pref_obd_update_period_title">Update Period in Seconds</string>
+    <string name="pref_obd_update_period_summary">The length of time between querying vehicle data in seconds</string>
+    <string name="pref_max_fuel_econ_title">Maximum Fuel Economy Value</string>
+    <string name="pref_max_fuel_econ_summary">Any fuel economy values larger than this will be thrown out</string>
+    <string name="pref_volumetric_efficiency_dialog_title">Volumetric Efficiency (eg 0.85)</string>
+    <string name="pref_volumetric_efficiency_summary">Used for fuel economy on vehicles without MAF sensor</string>
+    <string name="pref_volumetric_efficiency_title">Volumetric Efficiency</string>
+    <string name="pref_engine_displacement_title">Engine Displacement (liters)</string>
+    <string name="pref_engine_displacement_summary">Used for fuel economy on vehicles without MAF sensor</string>
+    <string name="pref_reader_config_title">Reader Config Commands</string>
+    <string name="pref_reader_config_summary">Commands to configure bluetooth reader, separate with new line</string>
+    <string name="title_pref_commands_summary">Select the commands you would like to see in real-time.</string>
+    <string name="title_pref_commands_title">OBD Commands</string>
+    <string name="title_pref_full_logging"> Full logging configuration </string>
+    <string name="pref_enable_full_logging_summary"> Enables full offline logging with upload</string>
+    <string name="pref_enable_full_logging_title"> Enable full logging </string>
+    <string name="default_dirname_full_logging">OBDReaderLogs</string>
+    <string name="pref_dirname_dialogTitle">Choose the name of the directory to save the logs</string>
+    <string name="pref_dirname_title">Directory name</string>
+    <string name="pref_dirname_summary">Name of the directory where to save the files</string>
+    <string name="pref_dev_email_title">Developer Email</string>
+    <string name="pref_dev_email_summary">Logs will be emailed to this address</string>
+    <string name="text_noerrors">There were no errors found.!</string>
+
 </resources>

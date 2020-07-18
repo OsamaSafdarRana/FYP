@@ -6,12 +6,27 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
     <style name="ProgressBarStyle">
         <item name="colorAccent">@color/colorpb</item>
     </style>
 
     <style name="DialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="android:background">@drawable/background_color</item>
+        <item name="android:background">@color/colornotification</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:fontFamily">@font/segoeui</item>
+        <item name="android:textSize">@dimen/font_medium</item>
     </style>
 
     <style name="ButtonStyle">
@@ -19,12 +34,28 @@
         <item name="android:textAlignment">center</item>
         <item name="android:textSize">@dimen/font_button</item>
         <item name="android:textAllCaps">true</item>
-        <item name="android:textColor">@color/colorText</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_height">@dimen/button_height</item>
+    </style>
+
+    <style name="TroubleButtonStyle">
+        <item name="android:background">@drawable/troubleshootbutton</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">@dimen/font_button</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/colorBlack</item>
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:layout_height">@dimen/button_height</item>
     </style>
 
     <style name="EditTextStyle">
+        <item name="android:background">@drawable/bg_spinner</item>
+        <item name="android:textSize">@dimen/font_button</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textColorHint">@color/colorTextHint</item>
+    </style>
+    <style name="EditTextStyle2">
         <item name="android:background">@drawable/edit_text</item>
         <item name="android:textSize">@dimen/font_button</item>
         <item name="android:textColor">@color/colorBlack</item>
@@ -33,12 +64,49 @@
 
     <style name="SpinnerStyle">
         <item name="android:background">@drawable/spinner</item>
-        <item name="android:textAlignment">center</item>
+        <item name="android:shadowColor">@color/colorBlack</item>
         <item name="android:textSize">@dimen/font_medium</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:drawableEnd">@drawable/arrowdown</item>
+        <item name="android:drawableStart">@drawable/carspinner</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:layout_height">@dimen/button_height</item>
+    </style>
+
+    <style name="SpinnerStyle2">
+        <item name="android:background">@drawable/spinner2</item>
+        <item name="android:shadowColor">@color/colorBlack</item>
+        <item name="android:textSize">@dimen/font_medium</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:drawablePadding">10sp</item>
+        <item name="android:drawableStart">@drawable/carspinner</item>
         <item name="android:dropDownSelector">@color/colorBlack</item>
         <item name="android:textColor">@color/colorBlack</item>
         <item name="android:color">@color/colorBlack</item>
         <item name="android:layout_height">@dimen/button_height</item>
     </style>
 
+    <style name="SpinnerStyle3">
+        <item name="android:background">@drawable/spinner</item>
+        <item name="android:shadowColor">@color/colorBlack</item>
+        <item name="android:textSize">@dimen/font_medium</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:drawableEnd">@drawable/arrowdown</item>
+<!--        <item name="android:drawableStart">@drawable/carspinner</item>-->
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:layout_height">@dimen/button_height</item>
+    </style>
+
+    <style name="SpinnerStyle4">
+        <item name="android:background">@drawable/spinner2</item>
+        <item name="android:shadowColor">@color/colorBlack</item>
+        <item name="android:textSize">@dimen/font_medium</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:drawablePadding">10sp</item>
+<!--        <item name="android:drawableStart">@drawable/carspinner</item>-->
+        <item name="android:dropDownSelector">@color/colorBlack</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:color">@color/colorBlack</item>
+        <item name="android:layout_height">@dimen/button_height</item>
+    </style>
 </resources>

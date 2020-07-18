@@ -21,8 +21,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/iv_car"
-        android:layout_marginTop="30sp"
-        android:fontFamily="@font/bahnschrift"
+        android:layout_marginTop="65sp"
+        android:fontFamily="@font/segoeuibold"
         android:textColor="@color/colorBlack"
         android:textStyle="bold"
         android:textAlignment="center"
@@ -30,95 +30,55 @@
         android:textSize="@dimen/font_large"
         android:layout_centerHorizontal="true"/>
 
-    <TextView
-        android:id="@+id/tv_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/text_email"
-        android:layout_below="@id/tv_choose_option"
-        android:layout_marginTop="50sp"
-        android:textSize="@dimen/font_medium"
-        android:layout_alignStart="@id/et_email"
-        android:layout_alignEnd="@id/et_email"
-        android:textColor="@color/colorBlack"/>
-
     <EditText
         android:id="@+id/et_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="50sp"
-        android:layout_below="@id/tv_email"
-        android:layout_marginStart="20sp"
-        android:layout_marginEnd="20sp"
+        android:layout_marginTop="30sp"
+        android:layout_below="@id/tv_choose_option"
         style="@style/EditTextStyle"
         android:inputType="textEmailAddress"
         android:textSize="@dimen/font_input"
+        android:layout_marginStart="30sp"
+        android:layout_marginEnd="30sp"
         android:textColor="@color/colorBlack"
         android:hint="@string/text_email"
-        android:fontFamily="@font/bahnschrift"
-        android:textColorHint="@color/colorBlack"/>
-
-    <TextView
-        android:id="@+id/tv_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/text_password"
-        android:layout_below="@id/et_email"
-        android:layout_marginTop="10sp"
-        android:textSize="@dimen/font_medium"
-        android:layout_alignStart="@id/et_email"
-        android:layout_alignEnd="@id/et_email"
-        android:textColor="@color/colorBlack"/>
+        android:fontFamily="@font/segoeui"
+        android:drawableStart="@drawable/mail"
+        android:paddingStart="20sp"
+        android:drawablePadding="5sp"
+        android:textColorHint="@color/colorTextHint"/>
 
     <EditText
         android:id="@+id/et_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="50sp"
-        android:layout_below="@id/tv_password"
+        android:layout_marginTop="20sp"
+        android:layout_below="@id/et_email"
         android:layout_alignStart="@id/et_email"
         android:layout_alignEnd="@id/et_email"
         style="@style/EditTextStyle"
         android:inputType="textPassword"
+        android:drawableStart="@drawable/pass"
+        android:paddingStart="20sp"
+        android:drawablePadding="5sp"
         android:textSize="@dimen/font_input"
         android:textColor="@color/colorBlack"
         android:hint="@string/text_password"
-        android:fontFamily="@font/bahnschrift"
-        android:textColorHint="@color/colorBlack"/>
+        android:fontFamily="@font/segoeui"
+        android:textColorHint="@color/colorTextHint"/>
 
     <ProgressBar
         android:id="@+id/pb_signin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:layout_marginTop="5sp"
         android:layout_below="@id/et_password"
         android:visibility="gone"/>
 
-    <TextView
-        android:id="@+id/tv_already"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/tv_signup"
-        android:fontFamily="@font/bahnschrift"
-        android:textColor="@color/colorBlack"
-        android:textAlignment="center"
-        android:text="@string/text_account"
-        android:textSize="@dimen/font_medium"
-        android:layout_centerHorizontal="true"/>
-
-    <TextView
-        android:id="@+id/tv_signup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/bahnschrift"
-        android:textColor="@color/colorTextBlue"
-        android:textStyle="bold"
-        android:layout_marginBottom="30sp"
-        android:layout_alignParentBottom="true"
-        android:textAlignment="center"
-        android:text="@string/text_signup"
-        android:textSize="@dimen/font_medium"
-        android:layout_centerHorizontal="true"/>
 
     <Button
         android:id="@+id/bt_continue"
@@ -127,10 +87,84 @@
         android:textAllCaps="false"
         android:text="@string/text_signin"
         android:textStyle="bold"
-        android:layout_above="@id/tv_already"
-        android:layout_marginBottom="15sp"
-        android:fontFamily="@font/bahnschrift"
-        android:textColor="@color/colorBlack"
+        android:layout_below="@id/et_password"
+        android:layout_marginTop="50sp"
+        android:fontFamily="@font/segoeui"
+        android:textColor="@color/colorText"
         style="@style/ButtonStyle"/>
+
+<!--    <TextView-->
+<!--        android:id="@+id/tv_txtother"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:fontFamily="@font/segoeui"-->
+<!--        android:textColor="@color/colortxtgrey"-->
+<!--        android:textAlignment="center"-->
+<!--        android:layout_below="@id/bt_continue"-->
+<!--        android:layout_marginTop="50sp"-->
+<!--        android:text="@string/text_connect"-->
+<!--        android:textSize="@dimen/font_extra_small"-->
+<!--        android:layout_centerHorizontal="true"/>-->
+
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/ll_fb_google"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_below="@id/tv_txtother"-->
+<!--        android:layout_alignStart="@id/et_email"-->
+<!--        android:layout_alignEnd="@id/et_email"-->
+<!--        android:layout_marginTop="15sp">-->
+<!--        <Button-->
+<!--            android:id="@+id/bt_fb"-->
+<!--            android:layout_width="108sp"-->
+<!--            android:layout_height="38sp"-->
+<!--            android:textAllCaps="false"-->
+<!--            android:text="@string/text_fb"-->
+<!--            android:textStyle="bold"-->
+<!--            android:layout_marginStart="50sp"-->
+<!--            android:fontFamily="@font/segoeuisemibold"-->
+<!--            android:background="@color/colorfbBlue"-->
+<!--            android:textColor="@color/colorText"/>-->
+<!--        <Button-->
+<!--            android:id="@+id/bt_google"-->
+<!--            android:layout_width="108sp"-->
+<!--            android:layout_height="38sp"-->
+<!--            android:textAllCaps="false"-->
+<!--            android:text="@string/text_google"-->
+<!--            android:textStyle="bold"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_marginEnd="50sp"-->
+<!--            android:fontFamily="@font/segoeuisemibold"-->
+<!--            android:background="@color/colorgooglered"-->
+<!--            android:textColor="@color/colorText"/>-->
+<!--    </RelativeLayout>-->
+    <TextView
+        android:id="@+id/tv_already"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/tv_signup"
+        android:fontFamily="@font/segoeui"
+        android:textColor="@color/colorEditText"
+        android:textAlignment="center"
+        android:layout_marginBottom="20sp"
+        android:layout_alignParentBottom="true"
+        android:text="@string/text_account"
+        android:textSize="@dimen/font_extra_small"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/tv_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/segoeui"
+        android:textColor="@color/colortxtgreen"
+        android:textStyle="bold"
+        android:layout_toEndOf="@id/tv_already"
+        android:textAlignment="center"
+        android:layout_marginBottom="20sp"
+        android:layout_alignParentBottom="true"
+        android:text="@string/text_signup"
+        android:textSize="@dimen/font_extra_small"/>
 
 </RelativeLayout>

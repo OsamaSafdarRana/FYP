@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_color"
+    tools:context=".View.Fragment.AddReminderFragment">
+
+    <TextView
+        android:id="@+id/tv_setreminder"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="30sp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="40sp"
+        android:gravity="center"
+        android:fontFamily="@font/segoeuibold"
+        android:textSize="@dimen/font_medium"
+        android:textColor="@color/colorBlack"
+        android:text="@string/text_setreminder"/>
+
+    <ImageView
+        android:id="@+id/bt_back"
+        android:layout_width="40sp"
+        android:layout_height="40sp"
+        android:layout_marginTop="30sp"
+        android:layout_marginStart="30sp"
+        android:background="@color/transparent"
+        android:src="@drawable/ic_back"/>
+
+    <ScrollView
+        android:id="@+id/ll_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20sp"
+        android:background="@color/transparent"
+        android:layout_below="@id/tv_setreminder">
+
+        <RelativeLayout
+            android:id="@+id/rl_service"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30sp"
+            android:layout_marginEnd="30sp">
+
+            <ImageView
+                android:id="@+id/iv_reminder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_reminder"/>
+
+            <TextView
+                android:id="@+id/tv_titleservice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/font_small"
+                android:layout_below="@id/iv_reminder"
+                android:layout_marginTop="50sp"
+                android:fontFamily="@font/segoeuisemibold"
+                android:text="@string/text_service"/>
+
+            <AutoCompleteTextView
+                android:id="@+id/et_service"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/EditTextStyle"
+                android:layout_marginTop="5sp"
+                android:paddingStart="10sp"
+                android:paddingEnd="10sp"
+                android:fontFamily="@font/segoeui"
+                android:textColorHint="@color/colorTextHint"
+                android:layout_below="@id/tv_titleservice"
+                android:hint="@string/text_typeservice"
+                android:minHeight="50sp"/>
+
+            <TextView
+                android:id="@+id/tv_titlekm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/font_small"
+                android:layout_below="@id/et_service"
+                android:layout_marginTop="20sp"
+                android:fontFamily="@font/segoeuisemibold"
+                android:text="@string/text_km"/>
+
+            <AutoCompleteTextView
+                android:id="@+id/et_km"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/EditTextStyle"
+                android:textColorHint="@color/colorTextHint"
+                android:paddingStart="10sp"
+                android:paddingEnd="10sp"
+                android:layout_marginTop="5sp"
+                android:inputType="number"
+                android:fontFamily="@font/segoeui"
+                android:layout_below="@id/tv_titlekm"
+                android:hint="@string/text_enterkm"
+                android:layout_marginBottom="10sp"
+                android:minHeight="50sp"/>
+
+            <Button
+                android:id="@+id/bt_continue"
+                android:layout_width="190sp"
+                android:layout_height="56sp"
+                android:textAllCaps="false"
+                android:text="@string/text_continue"
+                android:layout_below="@id/et_km"
+                android:layout_marginTop="50sp"
+                android:layout_marginBottom="20sp"
+                android:fontFamily="@font/segoeuibold"
+                android:textColor="@color/colorText"
+                style="@style/ButtonStyle"/>
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

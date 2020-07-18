@@ -23,27 +23,34 @@ import com.exercise.caraugmentedreality.R;
 import com.exercise.caraugmentedreality.View.Activity.CarRegistrationActivity;
 import com.exercise.caraugmentedreality.View.Activity.HomeActivity;
 import com.exercise.caraugmentedreality.View.Activity.LoginActivity;
+import com.exercise.caraugmentedreality.View.Activity.SignupActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
+
 import butterknife.BindView;
 
 public class SignupFragment extends BaseFragment implements SignupContract.View {
 
     SignupPresenter mPresenter;
-
     @BindView(R.id.et_email)
     EditText et_email;
-
     @BindView(R.id.et_password)
     EditText et_password;
-
     @BindView(R.id.bt_continue)
     Button bt_signup;
-
+    @BindView(R.id.tv_signin)
+    TextView tv_signin;
     @BindView(R.id.pb_signup)
     ProgressBar pb_signup;
 
@@ -74,6 +81,12 @@ public class SignupFragment extends BaseFragment implements SignupContract.View 
                     registerUser();
                 }
             });
+            tv_signin.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    moveToSignin();
+                }
+            });
         }
     }
 
@@ -85,15 +98,6 @@ public class SignupFragment extends BaseFragment implements SignupContract.View 
     @Override
     public void showMessage(String message) {
         showToastMessage(message);
-    }
-
-
-    @Override
-    public void moveToHomeScreen() {
-        Intent intent = new Intent(getActivity(), HomeActivity.class);
-        intent.putExtra("Email",email);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
     }
 
     @Override
@@ -123,6 +127,13 @@ public class SignupFragment extends BaseFragment implements SignupContract.View 
                 }
             });
         }
+    }
+
+    @Override
+    public void moveToSignin() {
+        Intent intent = new Intent(getActivity(), LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
 

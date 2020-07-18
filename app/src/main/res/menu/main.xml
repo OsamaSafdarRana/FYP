@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/startdata"
+        android:orderInCategory="100"
+        android:title="@string/menu_start_live_data" />
+    <item
+        android:id="@+id/stopdata"
+        android:orderInCategory="100"
+        android:title="@string/menu_stop_live_data" />
+    <item
+        android:id="@+id/getdtc"
+        android:orderInCategory="100"
+        android:title="@string/menu_get_dtc" />
+    <item
+        android:id="@+id/action_trips"
+        android:orderInCategory="100"
+        android:title="@string/menu_trip_list" />
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings" />
+</menu>

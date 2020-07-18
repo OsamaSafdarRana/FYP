@@ -1,35 +1,48 @@
 package com.exercise.caraugmentedreality.View.Fragment;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.PopupMenu;
-
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.cocosw.bottomsheet.BottomSheet;
 import com.exercise.caraugmentedreality.Contract.HomeContract;
-import com.exercise.caraugmentedreality.Presenter.GuidePresenter;
+import com.exercise.caraugmentedreality.Model.Car;
 import com.exercise.caraugmentedreality.Presenter.HomePresenter;
 import com.exercise.caraugmentedreality.R;
-import com.exercise.caraugmentedreality.View.Activity.GuideActivity;
-import com.exercise.caraugmentedreality.View.Activity.HelpActivity;
-import com.exercise.caraugmentedreality.View.Activity.JournalActivity;
+import com.exercise.caraugmentedreality.View.Activity.AddHistoryActivity;
+import com.exercise.caraugmentedreality.View.Activity.AddReminderActivity;
+import com.exercise.caraugmentedreality.View.Activity.CarRegistrationActivity;
+import com.exercise.caraugmentedreality.View.Activity.EngineGuideActivity;
+import com.exercise.caraugmentedreality.View.Activity.ExternalGuideActivity;
+import com.exercise.caraugmentedreality.View.Activity.HomeActivity;
+import com.exercise.caraugmentedreality.View.Activity.InternalGuideActivity;
 import com.exercise.caraugmentedreality.View.Activity.LoginActivity;
 import com.exercise.caraugmentedreality.View.Activity.MenuActivity;
 import com.exercise.caraugmentedreality.View.Activity.NotificationActivity;
-import com.exercise.caraugmentedreality.View.Activity.SignupActivity;
+import com.exercise.caraugmentedreality.View.Activity.ReminderActivity;
+import com.exercise.caraugmentedreality.View.Activity.ShowHistoryActivity;
 import com.exercise.caraugmentedreality.View.Activity.TroubleshootActivity;
+import com.exercise.caraugmentedreality.View.Activity.TroublshootOptionsActivity;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.firebase.ui.database.ObservableSnapshotArray;
+import com.github.anastr.speedviewlib.SpeedView;
+import com.github.anastr.speedviewlib.TubeSpeedometer;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -37,11 +50,17 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.apache.velocity.util.ArrayListWrapper;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 
 public class HomeFragment extends BaseFragment implements HomeContract.View {
 
     private HomePresenter mPresenter;
+    private SelectCarFragment mSelectCarFragment;
 
     @BindView(R.id.bt_notification)
     ImageButton bt_notification;
@@ -53,26 +72,31 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
     Button bt_journal;
     @BindView(R.id.bt_guide)
     Button bt_guide;
-    @BindView(R.id.bt_help1)
-    Button bt_help1;
-    @BindView(R.id.bt_help2)
-    Button bt_help2;
-    @BindView(R.id.bt_help3)
-    Button bt_help3;
-    @BindView(R.id.tv_choose_option)
-    TextView tvChoose;
+    @BindView(R.id.bt_profile)
+    Button bt_profile;
+    @BindView(R.id.sp_cars)
+    androidx.appcompat.widget.AppCompatSpinner sp_cars;
 
+    private FirebaseAuth mAuth;
+    List<Car> carList;
+    List<String> carRegistration;
 
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    //DatabaseReference regNo = database.getReference("Cars/"+database.getReference().child("Registration Number"));
-
+    String uid, email;
     String registNumber;
+    int score;
+    String scoreFromAdd,scorestr;
+    DatabaseReference userRef, carsRef,journalRef;
 
-
-//    public static final String IS_TS = "IS_TS";
 
     public HomeFragment() {
         mPresenter = new HomePresenter(this);
+        mSelectCarFragment = new SelectCarFragment();
+        mAuth = FirebaseAuth.getInstance();
+        uid = mAuth.getCurrentUser().getUid();
+        email = mAuth.getCurrentUser().getEmail();
+        userRef = FirebaseDatabase.getInstance().getReference().child("Users");
+        carsRef = FirebaseDatabase.getInstance().getReference().child("Cars").child(uid);
+        journalRef = FirebaseDatabase.getInstance().getReference().child("Journal").child(uid);
     }
 
     @Override
@@ -84,7 +108,55 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
     protected void onPostStart(Bundle savedInstanceState) {
         super.onPostStart(savedInstanceState);
         if (savedInstanceState == null) {
+            carList = new ArrayList<Car>();
+            carRegistration = new ArrayList<String>();
+            scoreFromAdd = getActivity().getIntent().getStringExtra("Score");
             registNumber = getActivity().getIntent().getStringExtra("RegistrationNumber");
+
+            carsRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                    //carList.clear();
+                    for (DataSnapshot postSnapshot: snapshot.getChildren()) {
+                        Car car = postSnapshot.getValue(Car.class);
+                        carList.add(car);
+                    }
+
+                    for (int i = 0; i < carList.size(); i++) {
+                        carRegistration.add(carList.get(i).getRegistrationNumber());
+                    }
+                    carRegistration.add("Add Another car");
+
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+                            R.layout.spinner_item,
+                            carRegistration);
+                    adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
+                    sp_cars.setAdapter(adapter);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    showMessage("Error: "+databaseError);
+                }
+            });
+            sp_cars.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    String item = parent.getItemAtPosition(position).toString();
+                    registNumber = item;
+                    showHealthScore();
+                    if(position == carList.size()){
+                        Intent intent = new Intent(getActivity(), CarRegistrationActivity.class);
+                        sp_cars.setSelection(0);
+                        startActivity(intent);
+                    }
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
 
             bt_menu.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -99,6 +171,27 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
                     moveToNotifications();
                 }
             });
+            bt_profile.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    new BottomSheet.Builder(getActivity()).title("Profile").sheet(R.menu.menu_profile).listener(new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            switch (which) {
+                                case R.id.logout:
+                                    FirebaseAuth.getInstance().signOut();
+                                    Intent intent = new Intent(getActivity(), LoginActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    startActivity(intent);
+                                    break;
+                                case R.id.email:
+                                    showMessage(email);
+                            }
+                        }
+                    }).show();
+                }
+            });
+
             bt_troubleshoot.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -122,25 +215,61 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
                     });
                 }
             });
-            bt_help1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    moveToHelp1();
-                }
+        }
 
-            });
-            bt_help2.setOnClickListener(new View.OnClickListener() {
+    }
+
+    private void showHealthScore() {
+        TubeSpeedometer speedView = getActivity().findViewById(R.id.speedView);
+
+        try {
+            journalRef.child(registNumber).child("HealthScore").addValueEventListener(new ValueEventListener() {
                 @Override
-                public void onClick(View view) {
-                    moveToHelp2();
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        if(scoreFromAdd != null){
+                            score = Integer.parseInt(scoreFromAdd);
+                            speedView.setSpeedAt(score);
+                        }
+                        else {
+                            scorestr = dataSnapshot.getValue().toString();
+                            score = Integer.parseInt(scorestr);
+                            speedView.setSpeedAt(score);
+                        }
+                            speedView.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    if (score != 0) {
+                                        Intent intent = new Intent(getActivity(), ShowHistoryActivity.class);
+                                        intent.putExtra("RegistrationNumber", registNumber);
+                                        startActivity(intent);
+                                    } else {
+                                        Intent intent = new Intent(getActivity(), AddHistoryActivity.class);
+                                        intent.putExtra("RegistrationNumber", registNumber);
+                                        startActivity(intent);
+                                    }
+                                }
+                            });
+                    }
+                    else {
+                        speedView.setSpeedAt(0);
+                        speedView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(getActivity(),AddHistoryActivity.class);
+                                intent.putExtra("RegistrationNumber", registNumber);
+                                startActivity(intent);
+                            }
+                        });
+                    }
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
                 }
             });
-            bt_help3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    moveToHelp3();
-                }
-            });
+        }catch (NullPointerException NPexc){
+            showMessage(NPexc.toString());
         }
     }
 
@@ -166,116 +295,100 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
 
     @Override
     public void moveToTroubleshooting() {
-        Intent intent = new Intent(getActivity(), TroubleshootActivity.class);
-        startActivity(intent);
+        new BottomSheet.Builder(getActivity()).title("Troubleshooting").sheet(R.menu.menu_troublshoot).listener(new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case R.id.questionnaire:
+                        Intent intent = new Intent(getActivity(), TroubleshootActivity.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.obd2:
+                        Intent launchIntent = getActivity().getPackageManager().getLaunchIntentForPackage("com.exercise.obd2");
+                        if (launchIntent != null) {
+                            startActivity(launchIntent);
+                        } else {
+                            showMessage("There is no package available in android");
+                        }
+                        break;
+                }
+            }
+        }).show();
     }
 
     @Override
     public void moveToGuide() {
-        Intent intent = new Intent(getActivity(), GuideActivity.class);
-        startActivity(intent);
+        new BottomSheet.Builder(getActivity()).title("Car Guide").sheet(R.menu.menu_guide).listener(new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case R.id.interior:
+                        Intent intent = new Intent(getActivity(), InternalGuideActivity.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.exterior:
+                        Intent intent2 = new Intent(getActivity(), ExternalGuideActivity.class);
+                        startActivity(intent2);
+                        break;
+                    case R.id.engine:
+                        Intent intent3 = new Intent(getActivity(), EngineGuideActivity.class);
+                        startActivity(intent3);
+                        break;
+                }
+            }
+        }).show();
     }
 
     @Override
     public void moveToJournal() {
-        Intent intent = new Intent(getActivity(), JournalActivity.class);
-        intent.putExtra("RegistrationNumber",registNumber);
-        startActivity(intent);
+        new BottomSheet.Builder(getActivity()).title("Reminder").sheet(R.menu.menu_journal).listener(new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case R.id.add:
+                        Intent intent = new Intent(getActivity(), AddReminderActivity.class);
+                        intent.putExtra("RegistrationNumber", registNumber);
+                        startActivity(intent);
+                        break;
+                    case R.id.show:
+                        Intent intent2 = new Intent(getActivity(), ReminderActivity.class);
+                        intent2.putExtra("RegistrationNumber", registNumber);
+                        startActivity(intent2);
+                        break;
+                }
+            }
+        }).show();
     }
-
-
 
     @Override
     public void moveToNotifications() {
         Intent intent = new Intent(getActivity(), NotificationActivity.class);
+        intent.putExtra("RegistrationNumber",registNumber);
         startActivity(intent);
-    }
-
-    @SuppressLint("ResourceType")
-    @Override
-    public void moveToHelp1() {
-        new AlertDialog.Builder(getActivity(),R.style.DialogStyle)
-                .setTitle("Troubleshooting")
-                .setIcon(R.drawable.back)
-                .setMessage("User can troubleshoot any basic problem in case of emergency. Basic problems which " +
-                        "are covered are engine heating beacuse of radiator, engine head, engine coolant and battery.")
-                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Continue with delete operation
-                    }
-                })
-                .show();
-   }
-
-    @Override
-    public void moveToHelp2() {
-        new AlertDialog.Builder(getActivity(),R.style.DialogStyle)
-                .setTitle("Car Journal")
-                .setMessage("User can add History, view history and view Health score of his car. History includes" +
-                        " date of last change/service of engine oil, transmission fluid, radiator fluid, engine coolant and brake oil.")
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Continue with delete operation
-                    }
-                })
-                .show();
-    }
-
-    @Override
-    public void moveToHelp3() {
-        new AlertDialog.Builder(getActivity(),R.style.DialogStyle)
-                .setTitle("Car Guide")
-                .setMessage("User can get complete guide of his car. Guide includes interior guide and exterior guide." +
-                        " It will help user understand his car better.")
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Continue with delete operation
-                    }
-                })
-                .show();
-    }
-
-    @Override
-    public void fetchRegNo() {
-//        regNo.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                String registrationNum = dataSnapshot.getValue().toString();
-//            }
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//            }
-//        });
     }
 
     @Override
     public void moveToSignIn() {
-        Intent intent = new Intent(getActivity(),LoginActivity.class);
+        Intent intent = new Intent(getActivity(), LoginActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 
     @Override
     public void showMenu() {
-        Intent intent = new Intent(getActivity(), MenuActivity.class);
-        startActivity(intent);
-//        PopupMenu popup = new PopupMenu(getActivity(), (View) view);
-//        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-//            @Override
-//            public boolean onMenuItemClick(MenuItem item) {
-//                switch (item.getItemId()){
-//                    case R.id.i3:
-//                        FirebaseAuth.getInstance().signOut();
-//                        moveToSignIn();
-//                        break;
-//                    default:
-//                        showMessage("Options Coming Soon.");
-//                }
-//            return true;
-//            }
-//        });// to implement on click event on items of menu
-//        MenuInflater inflater = popup.getMenuInflater();
-//        inflater.inflate(R.menu.menu_home, popup.getMenu());
-//        popup.show();
+        new AlertDialog.Builder(getActivity(),R.style.DialogStyle)
+                .setTitle("About CAR")
+                .setIcon(R.drawable.car)
+                .setMessage("CAR is an app designed and developed by Haider Ali Babar and Osama Safdar.\n" +
+                        "It is a mobile application that is based on android platform that help its users to get assistance" +
+                        " in an intelligent manner, in the case their car breaks down, or suffers from any technical issue anytime anywhere." +
+                        "It also gives the option for car guide of the car. It will also track health of the car by simple inputs from user." +
+                        "All the user needs to do is, download the app.")
+                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Continue with delete operation
+                    }
+                })
+                .show();
     }
 }

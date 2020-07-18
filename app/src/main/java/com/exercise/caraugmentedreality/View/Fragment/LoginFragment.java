@@ -35,6 +35,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+
 import butterknife.BindView;
 
 import static android.content.ContentValues.TAG;
@@ -46,20 +48,16 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
 
     @BindView(R.id.tv_signup)
     TextView tv_signin;
-
     @BindView(R.id.et_email)
     EditText et_email;
-
     @BindView(R.id.et_password)
     EditText et_password;
-
     @BindView(R.id.bt_continue)
     Button bt_signin;
-
     @BindView(R.id.pb_signin)
     ProgressBar pb_signin;
 
-    String email,password;
+    String email,password,name;
 
     private FirebaseAuth mAuth;
 
@@ -67,9 +65,6 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
 
     public LoginFragment(){
         mPresenter = new LoginPresenter(this);
-//        database = FirebaseDatabase.getInstance();
-//        users = database.getReference("Users");
-
         mAuth = FirebaseAuth.getInstance();
     }
 
@@ -83,21 +78,20 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
         super.onPostStart(savedInstanceState);
 
         if (savedInstanceState == null) {
+            bt_signin.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    signIn();
+                }
+            });
 
+            tv_signin.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    moveToSignup();
+                }
+            });
         }
-        bt_signin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                signIn();
-            }
-        });
-
-        tv_signin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                moveToSignup();
-            }
-        });
     }
 
     @Override
@@ -149,6 +143,33 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
                 }
             }
         });
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if(mAuth.getCurrentUser()!=null){
+            getActivity().finish();
+            moveToSelectCar();
+        }
+    }
+
+    @Override
+    public void moveToSelectCar() {
+        Intent intent = new Intent(getActivity(), HomeActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
+    @Override
+    public void moveToSignup() {
+        Intent intent = new Intent(getActivity(), SignupActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+}
+
+
 
 //        users.addListenerForSingleValueEvent(new ValueEventListener() {
 //            @Override
@@ -175,27 +196,3 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
 //
 //            }
 //        });
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        if(mAuth.getCurrentUser()!=null){
-            getActivity().finish();
-            moveToSelectCar();
-        }
-    }
-
-    @Override
-    public void moveToSelectCar() {
-        Intent intent = new Intent(getActivity(), SelectCarActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-    }
-
-    @Override
-    public void moveToSignup() {
-        Intent intent = new Intent(getActivity(), SignupActivity.class);
-        startActivity(intent);
-    }
-}

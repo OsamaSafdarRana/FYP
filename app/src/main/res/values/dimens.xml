@@ -12,7 +12,7 @@
     <!-- font sizes -->
 
     <dimen name="font_extralarge">32sp</dimen>
-    <dimen name="font_input">22sp</dimen>
+    <dimen name="font_input">18sp</dimen>
     <dimen name="font_label">16sp</dimen>
     <dimen name="font_button_holo">20sp</dimen>
     <dimen name="font_large">22sp</dimen>

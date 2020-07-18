@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30sp"
-        android:fontFamily="@font/bahnschrift"
+        android:fontFamily="@font/segoeui"
         android:textSize="@dimen/font_large"
         android:text="@string/text_menu"
         android:textAlignment="center"
@@ -37,9 +37,9 @@
         android:id="@+id/ll1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="20sp"
+        android:layout_marginStart="10sp"
         android:layout_weight="1"
-        android:layout_marginEnd="20sp"
+        android:layout_marginEnd="10sp"
         android:layout_below="@id/tv_menu">
         <ImageView
             android:id="@+id/iv_addcar"

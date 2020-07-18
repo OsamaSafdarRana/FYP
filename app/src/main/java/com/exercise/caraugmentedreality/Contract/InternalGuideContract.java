@@ -8,8 +8,6 @@ public interface InternalGuideContract {
         void showError(String error);
         void showError(int error);
         void moveToHomeScreen();
-        void moveOnBack();
-        void moveToNotifications();
     }
     interface Presenter {
         // validation methods

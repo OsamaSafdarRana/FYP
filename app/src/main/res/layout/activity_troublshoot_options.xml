@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_color"
+    tools:context=".View.Activity.TroublshootOptionsActivity">
+
+    <ImageView
+        android:id="@+id/iv_car"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30sp"
+        android:layout_marginStart="60sp"
+        android:layout_marginEnd="60sp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/car"/>
+
+    <TextView
+        android:id="@+id/tv_choose_option"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_car"
+        android:layout_marginTop="70sp"
+        android:fontFamily="@font/segoeui"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:text="@string/tv_choose_option"
+        android:textSize="@dimen/font_large"
+        android:layout_centerHorizontal="true"/>
+
+
+    <LinearLayout
+        android:id="@+id/ll_questionnaire"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="90sp"
+        android:background="@color/transparent"
+        android:layout_below="@id/tv_choose_option">
+        <Button
+            android:id="@+id/bt_questionnaire"
+            android:layout_width="190sp"
+            android:layout_height="56sp"
+            android:textAllCaps="false"
+            android:text="@string/text_questionnaire"
+            android:textStyle="bold"
+            android:textColor="@color/colorBlack"
+            android:fontFamily="@font/segoeui"
+            style="@style/ButtonStyle"/>
+        <Button
+            android:id="@+id/bt_help1"
+            android:layout_width="28sp"
+            android:layout_marginStart="10sp"
+            android:layout_height="28sp"
+            android:fontFamily="@font/segoeui"
+            android:text="@string/text_help"
+            android:textStyle="bold"
+            android:textColor="@color/colorhelp"
+            style="@style/ButtonStyle"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_obd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50sp"
+        android:background="@color/transparent"
+        android:layout_below="@id/ll_questionnaire">
+        <Button
+            android:id="@+id/bt_obd"
+            android:layout_width="190sp"
+            android:layout_height="56sp"
+            android:fontFamily="@font/segoeui"
+            android:text="@string/text_obd2"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:textColor="@color/colorBlack"
+            style="@style/ButtonStyle"/>
+        <Button
+            android:id="@+id/bt_help2"
+            android:layout_width="28sp"
+            android:layout_marginStart="10sp"
+            android:layout_height="28sp"
+            android:text="@string/text_help"
+            android:textStyle="bold"
+            android:fontFamily="@font/segoeui"
+            android:textColor="@color/colorhelp"
+            style="@style/ButtonStyle"/>
+    </LinearLayout>
+</RelativeLayout>

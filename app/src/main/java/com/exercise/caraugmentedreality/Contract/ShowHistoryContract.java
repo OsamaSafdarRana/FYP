@@ -7,8 +7,7 @@ public interface ShowHistoryContract {
         void showMessage(String message);
         void showError(String error);
         void showError(int error);
-        void moveToNotifications();
-        void moveToHomeScreen();
+        void moveToAddHistory();
         void moveOnBack();
         void showData();
     }

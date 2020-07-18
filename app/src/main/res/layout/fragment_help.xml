@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/iv_car"
         android:layout_marginTop="60sp"
-        android:fontFamily="@font/bahnschrift"
+        android:fontFamily="@font/segoeui"
         android:textColor="@color/colorBlack"
         android:textStyle="bold"
         android:textAlignment="center"
@@ -39,7 +39,7 @@
         android:textStyle="bold"
         android:layout_marginBottom="30sp"
         android:layout_alignParentBottom="true"
-        android:fontFamily="@font/bahnschrift"
+        android:fontFamily="@font/segoeui"
         android:textColor="@color/colorBlack"
         style="@style/ButtonStyle"/>
 

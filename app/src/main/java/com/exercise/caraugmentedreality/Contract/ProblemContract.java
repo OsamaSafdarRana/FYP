@@ -8,7 +8,7 @@ public interface ProblemContract {
         void showError(String error);
         void showError(int error);
         void moveToHomeScreen();
-        void moveToImplementSolution();
+        void moveToTroublshoot();
     }
     interface Presenter {
 

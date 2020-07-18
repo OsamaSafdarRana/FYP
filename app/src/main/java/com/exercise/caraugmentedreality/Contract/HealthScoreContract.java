@@ -9,7 +9,7 @@ public interface HealthScoreContract {
         void showError(int error);
         void moveToJournal();
         int showHealthScore();
-        void moveToAddHistory();
+        void moveToShowHistory();
         void moveToHomeScreen();
         void moveToNotifications();
     }

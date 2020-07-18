@@ -1,9 +1,11 @@
 package com.exercise.caraugmentedreality.View.Fragment;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +17,13 @@ import com.exercise.caraugmentedreality.Model.ListItem;
 import com.exercise.caraugmentedreality.Presenter.NotificationPresenter;
 import com.exercise.caraugmentedreality.R;
 import com.exercise.caraugmentedreality.View.Activity.BaseActivity;
+import com.exercise.caraugmentedreality.View.Activity.HomeActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,11 +37,18 @@ public class NotificationFragment extends BaseFragment implements NotificationCo
     @BindView(R.id.recyclerview_notifications)
     RecyclerView recyclerView;
 
+    private FirebaseAuth mAuth;
+    DatabaseReference  notificationRef;
+
+    String uid,registNumber;
+
     private RecyclerView.Adapter adapter;
     private List<ListItem> listItems;
 
     public NotificationFragment() {
         mPresenter = new NotificationPresenter(this);
+        mAuth = FirebaseAuth.getInstance();
+        uid = mAuth.getCurrentUser().getUid();
     }
 
     @Override
@@ -44,20 +60,36 @@ public class NotificationFragment extends BaseFragment implements NotificationCo
     protected void onPostStart(Bundle savedInstanceState) {
         super.onPostStart(savedInstanceState);
         if(savedInstanceState == null){
+            registNumber = getActivity().getIntent().getStringExtra("RegistrationNumber");
+            notificationRef = FirebaseDatabase.getInstance().getReference().child("Journal").child(uid);
+
             listItems = new ArrayList<>();
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+            try {
+                notificationRef.child(registNumber).child("DaysLeft").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()) {
+                            for (int i =0;i<=dataSnapshot.getChildrenCount();i++){
+                                ListItem listItem = new ListItem(
+                                        "Oil Change",
+                                        "No of Days left: "+dataSnapshot.getValue().toString()
+                                );
+                                listItems.add(listItem);
+                            }
+                            adapter = new NotificationAdapter(listItems,getActivity());
+                            recyclerView.setAdapter(adapter);           }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            for (int i =0;i<11;i++){
-                ListItem listItem = new ListItem(
-                        "Title " + (i+1),
-                        "Description dummy details...."
-                );
-                listItems.add(listItem);
+                    }
+                });
+            }catch (NullPointerException NPexc){
+                showMessage(NPexc.toString());
             }
-            adapter = new NotificationAdapter(listItems,getActivity());
-            recyclerView.setAdapter(adapter);
         }
     }
 
@@ -68,11 +100,13 @@ public class NotificationFragment extends BaseFragment implements NotificationCo
 
     @Override
     public void showMessage(String message) {
-
+        showToastMessage(message);
     }
 
     @Override
-    public void openNotification() {
-
+    public void moveToHomeScreen() {
+        Intent intent = new Intent(getActivity(), HomeActivity.class);
+        getActivity().finish();
+        startActivity(intent);
     }
 }

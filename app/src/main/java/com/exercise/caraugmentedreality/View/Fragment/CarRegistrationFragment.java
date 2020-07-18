@@ -99,7 +99,6 @@ public class CarRegistrationFragment extends BaseFragment implements CarRegistra
                 }
                 else{
                     saveToDB();
-                    moveToHomeScreen();
                 }
             }
         });
@@ -150,41 +149,40 @@ public class CarRegistrationFragment extends BaseFragment implements CarRegistra
                         public void onComplete(@NonNull Task task) {
                             if(task.isSuccessful()) {
                                 showMessage("Data is stored successfully");
+                                moveToHomeScreen();
                             }
                             else {
                                 showMessage("Error while storing data");
                             }
                         }
                     });
-                    carRef.addChildEventListener(new ChildEventListener() {
-                        @Override
-                        public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                            showMessage(dataSnapshot.getChildren().toString());
-                            long a = dataSnapshot.getChildrenCount();
-
-
-                        }
-
-                        @Override
-                        public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                        }
-
-                        @Override
-                        public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-                        }
-
-                        @Override
-                        public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                        }
-                    });
+//                    carRef.addChildEventListener(new ChildEventListener() {
+//                        @Override
+//                        public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//                            showMessage(dataSnapshot.getChildren().toString());
+//                            long a = dataSnapshot.getChildrenCount();
+//                        }
+//
+//                        @Override
+//                        public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//
+//                        }
+//
+//                        @Override
+//                        public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+//
+//                        }
+//
+//                        @Override
+//                        public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//
+//                        }
+//
+//                        @Override
+//                        public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                        }
+//                    });
                 }
             }
 

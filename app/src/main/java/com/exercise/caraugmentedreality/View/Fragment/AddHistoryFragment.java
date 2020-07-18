@@ -1,8 +1,8 @@
 package com.exercise.caraugmentedreality.View.Fragment;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,20 +10,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.exercise.caraugmentedreality.Contract.AddHistoryContract;
 import com.exercise.caraugmentedreality.Presenter.AddHistoryPresenter;
 import com.exercise.caraugmentedreality.R;
 import com.exercise.caraugmentedreality.View.Activity.HomeActivity;
-import com.exercise.caraugmentedreality.View.Activity.JournalActivity;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,10 +27,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 
@@ -46,28 +48,22 @@ public class AddHistoryFragment extends BaseFragment implements AddHistoryContra
     AutoCompleteTextView et_mileage;
     @BindView(R.id.et_av_drive)
     AutoCompleteTextView et_av_drive;
-    @BindView(R.id.et_brake_fluid)
-    AutoCompleteTextView et_brake_fluid;
-    @BindView(R.id.et_coolant)
-    AutoCompleteTextView et_coolant;
     @BindView(R.id.et_oil)
     AutoCompleteTextView et_oil;
-    @BindView(R.id.et_radiator)
-    AutoCompleteTextView et_radiator_fluid;
-    @BindView(R.id.et_transmission)
-    AutoCompleteTextView et_transmission_fluid;
-    @BindView(R.id.sp_oil_running)
-    Spinner sp_oil_running;
     @BindView(R.id.sp_oil_thickness)
     Spinner sp_oil_thickness;
     @BindView(R.id.bt_continue)
     Button bt_continue;
 
+    String[] oilThicknessarray = {"Tap to select","20W-50 (3000/4000)","10W-40 (5000)","5W-30 (9000)","0W-20 (9000)"};
+
     final Calendar myCalendar = Calendar.getInstance();
 
     private FirebaseAuth mAuth;
     DatabaseReference journalRef,userRef;
-    String uid,registNumber,mileage,av_drive,brake_fluid,coolant,radiator_fluid,engine_oil,transmission_fluid,oil_running,oil_thickness;
+    String uid,registNumber,daysStr,healthscore,oilrunning,mileage,av_drive,engine_oil,oil_thickness;
+    long noOfDays = 0;
+    long score,noOfDaysLeft,scorevalue = 0;
 
     public AddHistoryFragment(){
         mPresenter = new AddHistoryPresenter(this);
@@ -89,7 +85,12 @@ public class AddHistoryFragment extends BaseFragment implements AddHistoryContra
 
         if(savedInstanceState ==  null){
             registNumber = getActivity().getIntent().getStringExtra("RegistrationNumber");
-            showMessage(registNumber);
+
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+                    R.layout.spinner_item2,
+                    oilThicknessarray);
+            adapter.setDropDownViewResource(R.layout.spinner_dropdown_item2);
+            sp_oil_thickness.setAdapter(adapter);
 
             bt_continue.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -98,30 +99,6 @@ public class AddHistoryFragment extends BaseFragment implements AddHistoryContra
                 }
             });
 
-            DatePickerDialog.OnDateSetListener date1 = new DatePickerDialog.OnDateSetListener() {
-
-                @Override
-                public void onDateSet(DatePicker view, int year, int monthOfYear,
-                                      int dayOfMonth) {
-                    // TODO Auto-generated method stub
-                    myCalendar.set(Calendar.YEAR, year);
-                    myCalendar.set(Calendar.MONTH, monthOfYear);
-                    myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                    updateLabel1();
-                }
-            };
-            DatePickerDialog.OnDateSetListener date2 = new DatePickerDialog.OnDateSetListener() {
-
-                @Override
-                public void onDateSet(DatePicker view, int year, int monthOfYear,
-                                      int dayOfMonth) {
-                    // TODO Auto-generated method stub
-                    myCalendar.set(Calendar.YEAR, year);
-                    myCalendar.set(Calendar.MONTH, monthOfYear);
-                    myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                    updateLabel2();
-                }
-            };
             DatePickerDialog.OnDateSetListener date3 = new DatePickerDialog.OnDateSetListener() {
 
                 @Override
@@ -131,49 +108,11 @@ public class AddHistoryFragment extends BaseFragment implements AddHistoryContra
                     myCalendar.set(Calendar.YEAR, year);
                     myCalendar.set(Calendar.MONTH, monthOfYear);
                     myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                    updateLabel3();
-                }
-            };
-            DatePickerDialog.OnDateSetListener date4 = new DatePickerDialog.OnDateSetListener() {
 
-                @Override
-                public void onDateSet(DatePicker view, int year, int monthOfYear,
-                                      int dayOfMonth) {
-                    // TODO Auto-generated method stub
-                    myCalendar.set(Calendar.YEAR, year);
-                    myCalendar.set(Calendar.MONTH, monthOfYear);
-                    myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                    updateLabel4();
-                }
-            };
-            DatePickerDialog.OnDateSetListener date5 = new DatePickerDialog.OnDateSetListener() {
 
-                @Override
-                public void onDateSet(DatePicker view, int year, int monthOfYear,
-                                      int dayOfMonth) {
-                    // TODO Auto-generated method stub
-                    myCalendar.set(Calendar.YEAR, year);
-                    myCalendar.set(Calendar.MONTH, monthOfYear);
-                    myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                    updateLabel5();
+                    updateLabel();
                 }
             };
-            et_brake_fluid.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    new DatePickerDialog(getActivity(), date1, myCalendar
-                            .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                            myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-                }
-            });
-            et_coolant.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    new DatePickerDialog(getActivity(), date2, myCalendar
-                            .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                            myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-                }
-            });
             et_oil.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -182,23 +121,6 @@ public class AddHistoryFragment extends BaseFragment implements AddHistoryContra
                             myCalendar.get(Calendar.DAY_OF_MONTH)).show();
                 }
             });
-            et_radiator_fluid.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    new DatePickerDialog(getActivity(), date4, myCalendar
-                            .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                            myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-                }
-            });
-            et_transmission_fluid.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    new DatePickerDialog(getActivity(), date5, myCalendar
-                            .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                            myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-                }
-            });
-            sp_oil_running.setOnItemSelectedListener(this);
             sp_oil_thickness.setOnItemSelectedListener(this);
         }
     }
@@ -231,28 +153,45 @@ public class AddHistoryFragment extends BaseFragment implements AddHistoryContra
     @Override
     public void moveToHomeScreen() {
         Intent intent = new Intent(getActivity(), HomeActivity.class);
+        intent.putExtra("Score",healthscore);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 
-    @Override
-    public void moveToJournal() {
-        Intent intent = new Intent(getActivity(), JournalActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-    }
 
     @Override
     public void storeData() {
         mileage = et_mileage.getText().toString();
         av_drive = et_av_drive.getText().toString();
-        brake_fluid = et_brake_fluid.getText().toString();
-        coolant = et_coolant.getText().toString();
         engine_oil = et_oil.getText().toString();
-        radiator_fluid = et_radiator_fluid.getText().toString();
-        transmission_fluid = et_transmission_fluid.getText().toString();
-        oil_running = sp_oil_running.getSelectedItem().toString();
         oil_thickness = sp_oil_thickness.getSelectedItem().toString();
+
+        Long days = getNoOfDays();
+        Long dailydrive = Long.parseLong(av_drive);
+        Long running = Long.parseLong(oilrunning);
+
+        score = (days*dailydrive);
+        if(score<=1000){
+            scorevalue = 90;
+        }
+        else if(score>1000 && score<=2000){
+            scorevalue = 75;
+        }
+        else if(score>2000 && score<=3000){
+            scorevalue = 60;
+        }
+        else {
+            scorevalue = 40;
+        }
+        healthscore = healthscore.valueOf(scorevalue);
+
+        if(dailydrive<running) {
+            noOfDaysLeft = (running - score) / dailydrive;
+        }
+        else {
+            showMessage("Change Oil");
+        }
+        daysStr = String.valueOf(noOfDaysLeft);
 
         userRef.child(uid).addValueEventListener(new ValueEventListener() {
             @Override
@@ -261,15 +200,12 @@ public class AddHistoryFragment extends BaseFragment implements AddHistoryContra
                     HashMap journalMap = new HashMap();
 
                     journalMap.put("UserID", uid);
-                    journalMap.put("Mileage", mileage);
+                    journalMap.put("SpeedometerReading", mileage);
                     journalMap.put("AverageDrive", av_drive);
-                    journalMap.put("BrakeFluid", brake_fluid);
-                    journalMap.put("Coolant", coolant);
                     journalMap.put("EngineOil", engine_oil);
-                    journalMap.put("RadiatorFluid", radiator_fluid);
-                    journalMap.put("TransmissionFluid", transmission_fluid);
-                    journalMap.put("OilRunning", oil_running);
                     journalMap.put("OilThickness", oil_thickness);
+                    journalMap.put("HealthScore", healthscore);
+                    journalMap.put("DaysLeft", daysStr);
 
                     journalRef.child(registNumber).updateChildren(journalMap);
                 }
@@ -281,45 +217,54 @@ public class AddHistoryFragment extends BaseFragment implements AddHistoryContra
             }
         });
         showMessage("History Added Successfully");
-        moveToJournal();
+        moveToHomeScreen();
     }
 
-    private void updateLabel1() {
+    private void updateLabel() {
         String myFormat = "dd/MM/yyyy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-
-        et_brake_fluid.setText(sdf.format(myCalendar.getTime()));
-    }
-    private void updateLabel2() {
-        String myFormat = "dd/MM/yyyy"; //In which you need put here
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-
-        et_coolant.setText(sdf.format(myCalendar.getTime()));
-    }
-    private void updateLabel3() {
-        String myFormat = "dd/MM/yyyy"; //In which you need put here
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-
         et_oil.setText(sdf.format(myCalendar.getTime()));
+        getNoOfDays();
     }
-    private void updateLabel4() {
-        String myFormat = "dd/MM/yyyy"; //In which you need put here
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
-        et_radiator_fluid.setText(sdf.format(myCalendar.getTime()));
-    }
-    private void updateLabel5() {
+    private long getNoOfDays() {
         String myFormat = "dd/MM/yyyy"; //In which you need put here
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat,Locale.ENGLISH);
 
-        et_transmission_fluid.setText(sdf.format(myCalendar.getTime()));
+        String oil = sdf.format(myCalendar.getTime()); //string date
+        String current = sdf.format(Calendar.getInstance().getTime());
+
+
+        try {
+            Date curentDate = sdf.parse(current);
+            Date oilDate =  sdf.parse(oil);
+            noOfDays = getUnitBetweenDates(oilDate, curentDate, TimeUnit.DAYS);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        //showMessage(String.valueOf(noOfDays));
+        return noOfDays;
+        // use noOfDays var
+
     }
+
+    private static long getUnitBetweenDates(Date oilDate, Date currentDate, TimeUnit unit) {
+        long timeDiff = currentDate.getTime() - oilDate.getTime();
+        return unit.convert(timeDiff, TimeUnit.MILLISECONDS);
+    }
+
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String item = parent.getItemAtPosition(position).toString();
-        if(position != 0){
-            showMessage("Selected: "+ item);
+        if(position == 0){
+            oilrunning = "4000";
+        }
+        else if(position == 1){
+            oilrunning = "5000";
+        }
+        else if(position == 2 || position == 3){
+            oilrunning = "9000";
         }
     }
 
@@ -328,67 +273,3 @@ public class AddHistoryFragment extends BaseFragment implements AddHistoryContra
 
     }
 }
-
-
-
-//    DatabaseReference brakeFluid = database.getReference("Cars/" +regNo+"/Journal/Brake Fluid");
-//    DatabaseReference engineCoolant = database.getReference("Cars/" +regNo+"/Journal/Engine Coolant");
-//    DatabaseReference engineOil = database.getReference("Cars/" +regNo+"/Journal/Engine Oil");
-//    DatabaseReference radiatorFluid = database.getReference("Cars/" +regNo+"/Journal/Radiator Fluid");
-//    DatabaseReference transmissionFluid = database.getReference("Cars/" +regNo+"/Journal/Transmission Fluid");
-
-//        brakeFluid.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(
-//                    DataSnapshot dataSnapshot) {
-//                        brakeFluid.setValue(et_brake_fluid.getSelectedItem().toString());
-//
-//            }
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//            }
-//        });
-//
-//        engineCoolant.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(
-//                    DataSnapshot dataSnapshot) {
-//                        engineCoolant.setValue(et_coolant.getSelectedItem().toString());
-//            }
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//            }
-//        });
-//
-//        engineOil.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(
-//                    DataSnapshot dataSnapshot) {
-//                        engineOil.setValue(et_oil.getSelectedItem().toString());
-//            }
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//            }
-//        });
-//
-//        radiatorFluid.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(
-//                    DataSnapshot dataSnapshot) {
-//                        radiatorFluid.setValue(et_radiator_fluid.getSelectedItem().toString());
-//            }
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//            }
-//        });
-//
-//        transmissionFluid.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(
-//                    DataSnapshot dataSnapshot) {
-//                        transmissionFluid.setValue(et_transmission_fluid.getSelectedItem().toString());
-//            }
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//            }
-//        });

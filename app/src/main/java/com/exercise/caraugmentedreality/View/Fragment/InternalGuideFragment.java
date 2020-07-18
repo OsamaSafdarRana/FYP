@@ -3,6 +3,7 @@ package com.exercise.caraugmentedreality.View.Fragment;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,32 +23,46 @@ public class InternalGuideFragment extends BaseFragment implements InternalGuide
 
     private InternalGuidePresenter mInternalGuidePresenter;
 
-    @BindView(R.id.iv_car)
-    ImageView iv_car;
+    @BindView(R.id.iv_1) ImageView iv_1;
+    @BindView(R.id.iv_2) ImageView iv_2;
+    @BindView(R.id.iv_3) ImageView iv_3;
+    @BindView(R.id.iv_4) ImageView iv_4;
+    @BindView(R.id.iv_5) ImageView iv_5;
+    @BindView(R.id.iv_6) ImageView iv_6;
+    @BindView(R.id.iv_7) ImageView iv_7;
+    @BindView(R.id.iv_8) ImageView iv_8;
+    @BindView(R.id.iv_9) ImageView iv_9;
+    @BindView(R.id.iv_10) ImageView iv_10;
+    @BindView(R.id.iv_11) ImageView iv_11;
+    @BindView(R.id.iv_12) ImageView iv_12;
 
-    @BindView(R.id.tv_choose_option)
-    TextView tv_choose;
+    @BindView(R.id.tv_1) TextView tv_1;
+    @BindView(R.id.tv_2) TextView tv_2;
+    @BindView(R.id.tv_3) TextView tv_3;
+    @BindView(R.id.tv_4) TextView tv_4;
+    @BindView(R.id.tv_5) TextView tv_5;
+    @BindView(R.id.tv_6) TextView tv_6;
+    @BindView(R.id.tv_7) TextView tv_7;
+    @BindView(R.id.tv_8) TextView tv_8;
+    @BindView(R.id.tv_9) TextView tv_9;
+    @BindView(R.id.tv_10) TextView tv_10;
+    @BindView(R.id.tv_11) TextView tv_11;
+    @BindView(R.id.tv_12) TextView tv_12;
 
-    @BindView(R.id.bt_notification)
-    ImageView bt_notification;
+    @BindView(R.id.tv_details1) TextView tv_details1;
+    @BindView(R.id.tv_details2) TextView tv_details2;
+    @BindView(R.id.tv_details3) TextView tv_details3;
+    @BindView(R.id.tv_details4) TextView tv_details4;
+    @BindView(R.id.tv_details5) TextView tv_details5;
+    @BindView(R.id.tv_details6) TextView tv_details6;
+    @BindView(R.id.tv_details7) TextView tv_details7;
+    @BindView(R.id.tv_details8) TextView tv_details8;
+    @BindView(R.id.tv_details9) TextView tv_details9;
+    @BindView(R.id.tv_details10) TextView tv_details10;
+    @BindView(R.id.tv_details11) TextView tv_details11;
+    @BindView(R.id.tv_details12) TextView tv_details12;
 
-    @BindView(R.id.iv_speedometer)
-    ImageView iv_speedometer;
-
-    @BindView(R.id.iv_battery)
-    ImageView iv_battery;
-
-    @BindView(R.id.iv_checkengine)
-    ImageView iv_checkengine;
-
-    @BindView(R.id.iv_handbrake)
-    ImageView iv_handbrake;
-
-    @BindView(R.id.iv_oil)
-    ImageView iv_oil;
-
-    @BindView(R.id.bt_back)
-    ImageButton bt_back;
+    MediaPlayer mp1,mp2,mp3,mp4,mp5,mp6,mp7,mp8,mp9,mp10,mp11,mp12;
 
     public InternalGuideFragment(){
         mInternalGuidePresenter = new InternalGuidePresenter(this);
@@ -63,102 +78,111 @@ public class InternalGuideFragment extends BaseFragment implements InternalGuide
         super.onPostStart(savedInstanceState);
 
         if(savedInstanceState == null){
-            iv_car.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    moveToHomeScreen();
-                }
-            });
-            bt_notification.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    showMessage("No notifications");
-                }
-            });
+            mp1 = MediaPlayer.create(getActivity(), R.raw.int1);
+            mp2 = MediaPlayer.create(getActivity(), R.raw.int2);
+            mp3 = MediaPlayer.create(getActivity(), R.raw.int3);
+            mp4 = MediaPlayer.create(getActivity(), R.raw.int4);
+            mp5 = MediaPlayer.create(getActivity(), R.raw.int5);
+            mp6 = MediaPlayer.create(getActivity(), R.raw.int6);
+            mp7 = MediaPlayer.create(getActivity(), R.raw.int7);
+            mp8 = MediaPlayer.create(getActivity(), R.raw.int8);
+            mp9 = MediaPlayer.create(getActivity(), R.raw.int9);
+            mp10 = MediaPlayer.create(getActivity(), R.raw.int10);
+            mp11 = MediaPlayer.create(getActivity(), R.raw.int11);
+            mp12 = MediaPlayer.create(getActivity(), R.raw.int12);
 
-            bt_back.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    moveOnBack();
-                }
-            });
+            iv_1.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
+                if(mp1.isPlaying()){
+                    mp1.pause();
+                }else{
+                    mp1.start();
+                }  }});
+            iv_2.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
+                if(mp2.isPlaying()){
+                    mp2.pause();
+                }else{
+                    mp2.start();
+                }  }});
+            iv_3.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
+                if(mp3.isPlaying()){
+                    mp3.pause();
+                }else{
+                    mp3.start();
+                }   }});
+            iv_4.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
+                if(mp4.isPlaying()){
+                    mp4.pause();
+                }else{
+                    mp4.start();
+                }  }});
+            iv_5.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
+                if(mp5.isPlaying()){
+                    mp5.pause();
+                }else{
+                    mp5.start();
+                }  }});
+            iv_6.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
+                if(mp6.isPlaying()){
+                    mp6.pause();
+                }else{
+                    mp6.start();
+                }  }});
+            iv_7.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
+                if(mp7.isPlaying()){
+                    mp7.pause();
+                }else{
+                    mp7.start();
+                }  }});
+            iv_8.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
+                if(mp8.isPlaying()){
+                    mp8.pause();
+                }else{
+                    mp8.start();
+                }  }});
+            iv_9.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
+                if(mp9.isPlaying()){
+                    mp9.pause();
+                }else{
+                    mp9.start();
+                }  }});
+            iv_10.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
+                if(mp10.isPlaying()){
+                    mp10.pause();
+                }else{
+                    mp10.start();
+                } }});
+            iv_11.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
+                if(mp11.isPlaying()){
+                    mp11.pause();
+                }else{
+                    mp11.start();
+                }  }});
+            iv_12.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {
+                if(mp12.isPlaying()){
+                    mp12.pause();
+                }else{
+                    mp12.start();
+                }  }});
 
-            iv_speedometer.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    showMessage("Speedometer");
-                    iv_speedometer.setVisibility(View.INVISIBLE);
-                    iv_battery.setVisibility(View.INVISIBLE);
-                    iv_handbrake.setVisibility(View.INVISIBLE);
-                    iv_oil.setVisibility(View.INVISIBLE);
-                    iv_checkengine.setVisibility(View.INVISIBLE);
-                    iv_handbrake.setVisibility(View.INVISIBLE);
-                    tv_choose.setText(R.string.text_speedometer);
-                    bt_back.setVisibility(View.VISIBLE);
-                }
-            });
+            tv_1.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) { tv_details1.setVisibility(View.VISIBLE); }});
+            tv_2.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) { tv_details2.setVisibility(View.VISIBLE); }});
+            tv_3.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) { tv_details3.setVisibility(View.VISIBLE); }});
+            tv_4.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) { tv_details4.setVisibility(View.VISIBLE); }});
+            tv_5.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) { tv_details5.setVisibility(View.VISIBLE); }});
+            tv_6.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) { tv_details6.setVisibility(View.VISIBLE); }});
+            tv_7.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) { tv_details7.setVisibility(View.VISIBLE); }});
+            tv_8.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) { tv_details8.setVisibility(View.VISIBLE); }});
+            tv_9.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) { tv_details9.setVisibility(View.VISIBLE); }});
+            tv_10.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) { tv_details10.setVisibility(View.VISIBLE); }});
+            tv_11.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) { tv_details11.setVisibility(View.VISIBLE); }});
+            tv_12.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) { tv_details12.setVisibility(View.VISIBLE); }});
 
-            iv_battery.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    showMessage("Battery Check Sign");
-                    iv_speedometer.setVisibility(View.INVISIBLE);
-                    iv_battery.setVisibility(View.INVISIBLE);
-                    iv_handbrake.setVisibility(View.INVISIBLE);
-                    iv_oil.setVisibility(View.INVISIBLE);
-                    iv_checkengine.setVisibility(View.INVISIBLE);
-                    iv_handbrake.setVisibility(View.INVISIBLE);
-                    tv_choose.setText(R.string.text_battery);
-                    bt_back.setVisibility(View.VISIBLE);
-                }
-            });
-
-            iv_checkengine.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    showMessage("Engine Check Light");
-                    iv_speedometer.setVisibility(View.INVISIBLE);
-                    iv_battery.setVisibility(View.INVISIBLE);
-                    iv_handbrake.setVisibility(View.INVISIBLE);
-                    iv_oil.setVisibility(View.INVISIBLE);
-                    iv_checkengine.setVisibility(View.INVISIBLE);
-                    iv_handbrake.setVisibility(View.INVISIBLE);
-                    tv_choose.setText(R.string.text_check_light);
-                    bt_back.setVisibility(View.VISIBLE);
-                }
-            });
-
-
-            iv_oil.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    showMessage("Engine Oil Level Light");
-                    iv_speedometer.setVisibility(View.INVISIBLE);
-                    iv_battery.setVisibility(View.INVISIBLE);
-                    iv_handbrake.setVisibility(View.INVISIBLE);
-                    iv_oil.setVisibility(View.INVISIBLE);
-                    iv_checkengine.setVisibility(View.INVISIBLE);
-                    iv_handbrake.setVisibility(View.INVISIBLE);
-                    tv_choose.setText(R.string.text_oil_check);
-                    bt_back.setVisibility(View.VISIBLE);
-                }
-            });
-
-
-            iv_handbrake.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    showMessage("Hand Brake Light");
-                    iv_speedometer.setVisibility(View.INVISIBLE);
-                    iv_battery.setVisibility(View.INVISIBLE);
-                    iv_handbrake.setVisibility(View.INVISIBLE);
-                    iv_oil.setVisibility(View.INVISIBLE);
-                    iv_checkengine.setVisibility(View.INVISIBLE);
-                    iv_handbrake.setVisibility(View.INVISIBLE);
-                    tv_choose.setText(R.string.text_handbrake_light);
-                    bt_back.setVisibility(View.VISIBLE);
-                }
-            });
+//            iv_car.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    moveToHomeScreen();
+//                }
+//            });
         }
     }
 
@@ -187,22 +211,5 @@ public class InternalGuideFragment extends BaseFragment implements InternalGuide
         Intent intent = new Intent(getActivity(), HomeActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
-    }
-
-    @Override
-    public void moveOnBack() {
-        iv_speedometer.setVisibility(View.VISIBLE);
-        iv_battery.setVisibility(View.VISIBLE);
-        iv_handbrake.setVisibility(View.VISIBLE);
-        iv_oil.setVisibility(View.VISIBLE);
-        iv_checkengine.setVisibility(View.VISIBLE);
-        iv_handbrake.setVisibility(View.VISIBLE);
-        tv_choose.setText(R.string.tv_choose_option);
-        bt_back.setVisibility(View.INVISIBLE);
-    }
-
-    @Override
-    public void moveToNotifications() {
-
     }
 }

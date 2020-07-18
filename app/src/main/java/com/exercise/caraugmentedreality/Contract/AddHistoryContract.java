@@ -9,7 +9,6 @@ public interface AddHistoryContract {
         void showError(int error);
         void moveToNotifications();
         void moveToHomeScreen();
-        void moveToJournal();
         void storeData();
     }
     interface Presenter {

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+    <item android:id="@+id/questionnaire"
+        android:title="@string/text_questionnaire"
+        android:icon="@drawable/ic_troubleshoot"/>
+    </group>
+    <group>
+    <item android:id="@+id/obd2"
+        android:title="@string/text_obd2"
+        android:icon="@drawable/ic_troubleshoot"/>
+    </group>
+</menu>

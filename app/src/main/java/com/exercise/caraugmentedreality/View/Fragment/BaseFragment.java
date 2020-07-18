@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -26,6 +27,8 @@ public abstract class BaseFragment extends android.app.Fragment {
     // to unbind ButterKnife on view destroy
     protected Unbinder mUnbinder = null;
 
+    // to hold UI while processing
+    protected Dialog mProgressDialog;
 
     @Nullable
     @Override
@@ -70,6 +73,17 @@ public abstract class BaseFragment extends android.app.Fragment {
 //            setLocale("af");
 //        }
 
+    }
+
+    protected void showProgress(String message) {
+        if (mProgressDialog == null) {
+//            mProgressDialog = DialogUtil.ShowProgress(getActivity(), message);
+            mProgressDialog = new Dialog(getActivity());
+
+            mProgressDialog.setCancelable(false);
+        }
+        if (!mProgressDialog.isShowing())
+            mProgressDialog.show();
     }
 
     @Override

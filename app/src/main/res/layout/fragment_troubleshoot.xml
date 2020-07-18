@@ -12,139 +12,120 @@
         android:id="@+id/sv_items"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/bt_continue"
-        android:layout_marginBottom="7sp"
+        android:layout_above="@id/tv_write"
+        android:layout_marginBottom="10sp"
         android:fillViewport="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/iv_car"
+        <TextView
+            android:id="@+id/tv_troubleshoot"
             android:layout_width="wrap_content"
             android:layout_marginTop="30sp"
             android:layout_centerHorizontal="true"
             android:layout_height="wrap_content"
-            android:src="@drawable/car"/>
+            android:fontFamily="@font/segoeuibold"
+            android:textSize="@dimen/font_small"
+            android:text="@string/text_troubleshooting"
+            android:textColor="@color/colorBlack"/>
 
-        <TextView
-            android:id="@+id/tv_ans_req"
+        <ImageView
+            android:id="@+id/iv_troubleshootcar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/iv_car"
-            android:layout_marginTop="70sp"
-            android:layout_marginStart="20sp"
-            android:layout_marginEnd="20sp"
-            android:fontFamily="@font/bahnschrift"
-            android:textColor="@color/colorBlack"
-            android:textStyle="bold"
-            android:textAlignment="center"
-            android:text="@string/tv_answer"
-            android:textSize="@dimen/font_large"
+            android:layout_below="@id/tv_troubleshoot"
+            android:layout_marginTop="50sp"
+            android:src="@drawable/troublshootcar"
             android:layout_centerHorizontal="true"/>
-
-            <TextView
-                android:id="@+id/bt_help"
-                android:layout_width="wrap_content"
-                android:layout_marginStart="50sp"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/bahnschrift"
-                android:text="@string/text_help1"
-                android:textStyle="bold"
-                android:textSize="@dimen/font_small"
-                android:textAllCaps="false"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="5sp"
-                android:layout_below="@id/tv_ans_req"
-                android:visibility="visible"
-                android:textColor="@color/colorBlack" />
 
             <TextView
             android:id="@+id/tv_question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/bt_help"
+            android:layout_below="@id/iv_troubleshootcar"
             android:layout_marginTop="30sp"
             android:layout_marginStart="100sp"
-            android:fontFamily="@font/bahnschrift"
+            android:fontFamily="@font/segoeuisemibold"
             android:textColor="@color/colorBlack"
-            android:textStyle="bold"
-            android:textAlignment="center"
             android:textSize="@dimen/font_large"
             android:layout_centerHorizontal="true"/>
 
-        <Spinner
-            android:id="@+id/sp_ans"
-            android:layout_width="match_parent"
-            android:layout_height="50sp"
-            android:layout_alignStart="@id/tv_question"
-            android:layout_alignEnd="@id/tv_question"
-            android:layout_below="@id/tv_question"
-            style="@style/SpinnerStyle"
-            android:fontFamily="@font/bahnschrift"
-            android:entries="@array/answers"
-            android:layout_marginTop="40sp"/>
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rg_ans"
+                android:layout_marginTop="20sp"
+                android:layout_alignStart="@id/tv_question"
+                android:layout_alignEnd="@id/tv_question"
+                android:layout_below="@+id/tv_question"
+                android:orientation="vertical">
+                <RadioButton android:id="@+id/radio_yes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/font_small"
+                    android:buttonTint="@color/colorBlack"
+                    android:fontFamily="@font/segoeui"
+                    android:textColor="@color/colorBlack"
+                    android:text="Yes"/>
+                <RadioButton android:id="@+id/radio_no"
+                    android:layout_width="wrap_content"
+                    android:textSize="@dimen/font_small"
+                    android:fontFamily="@font/segoeui"
+                    android:buttonTint="@color/colorBlack"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorBlack"
+                    android:text="No" />
+            </RadioGroup>
 
-        <TextView
-            android:id="@+id/tv_or"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/sp_ans"
-            android:layout_alignStart="@id/tv_question"
-            android:layout_alignEnd="@id/tv_question"
-            android:layout_marginTop="20sp"
-            android:textAlignment="center"
-            android:textSize="@dimen/font_small"
-            android:textColor="@color/colorAccent"
-            android:text="@string/text_or" />
+            <AutoCompleteTextView
+                android:id="@+id/et_problem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/font_input"
+                android:layout_marginTop="20sp"
+                android:padding="10sp"
+                android:fontFamily="@font/segoeui"
+                android:minHeight="50sp"
+                android:visibility="invisible"
+                style="@style/EditTextStyle2"
+                android:layout_below="@id/tv_question"
+                android:layout_alignStart="@id/tv_question"
+                android:layout_alignEnd="@id/tv_question"
+                android:inputType="textMultiLine"/>
 
             <Button
-                android:id="@+id/bt_prob_st"
+                android:id="@+id/bt_continue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="50sp"
                 android:textAllCaps="false"
-                android:fontFamily="@font/bahnschrift"
-                android:textColor="@color/colorBlack"
+                android:fontFamily="@font/segoeuibold"
+                android:textColor="@color/colorText"
                 android:layout_alignStart="@id/tv_question"
                 android:layout_alignEnd="@id/tv_question"
-                android:layout_below="@id/tv_or"
-                android:text="@string/text_write_yourself"
+                android:layout_below="@id/rg_ans"
+                android:clickable="false"
+                android:alpha=".5"
+                android:layout_marginBottom="10sp"
+                android:text="@string/text_continue"
                 style="@style/ButtonStyle"
-                android:layout_marginTop="20sp"/>
-
-                <EditText
-                    android:id="@+id/et_prob_st"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="50sp"
-                    android:fontFamily="@font/bahnschrift"
-                    style="@style/EditTextStyle"
-                    android:layout_below="@id/tv_question"
-                    android:layout_marginTop="40sp"
-                    android:layout_marginStart="20sp"
-                    android:layout_marginEnd="20sp"
-                    android:textSize="@dimen/font_input"
-                    android:inputType="textMultiLine"
-                    android:hint="@string/txt_prob"
-                    android:visibility="gone"
-                    android:textColorHint="@color/colorTextHint"/>
+                android:layout_marginTop="50sp"/>
 
         </RelativeLayout>
     </ScrollView>
 
-    <Button
-        android:id="@+id/bt_continue"
-        android:layout_width="190sp"
-        android:layout_height="56sp"
-        android:textAllCaps="false"
-        android:text="@string/text_continue"
-        android:textStyle="bold"
-        android:visibility="invisible"
-        android:layout_marginBottom="30sp"
+    <TextView
+        android:id="@+id/tv_write"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/segoeui"
+        android:textColor="@color/colortxtgreen"
+        android:textAlignment="center"
+        android:layout_marginBottom="20sp"
         android:layout_alignParentBottom="true"
-        android:fontFamily="@font/bahnschrift"
-        android:textColor="@color/colorBlack"
-        style="@style/ButtonStyle"/>
+        android:textSize="@dimen/font_extra_small"
+        android:layout_centerHorizontal="true"/>
 </RelativeLayout>

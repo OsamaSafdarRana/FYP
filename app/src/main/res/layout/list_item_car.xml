@@ -7,8 +7,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardview_items"
-        android:layout_marginStart="20sp"
-        android:layout_marginEnd="20sp"
+        android:layout_marginStart="10sp"
+        android:layout_marginEnd="10sp"
         android:layout_marginTop="10sp"
         android:layout_marginBottom="10sp"
         style="@style/ButtonStyle"
@@ -34,8 +34,8 @@
                         android:layout_height="wrap_content"
                         android:text="Name"
                         android:textColor="@color/colorBlack"
-                        android:layout_marginStart="20sp"
-                        android:fontFamily="@font/bahnschrift"
+                        android:layout_marginStart="10sp"
+                        android:fontFamily="@font/segoeui"
                         android:textSize="@dimen/font_large"/>
 
                     <TextView
@@ -45,7 +45,7 @@
                         android:text="Name"
                         android:textColor="@color/colorBlack"
                         android:layout_marginStart="5sp"
-                        android:fontFamily="@font/bahnschrift"
+                        android:fontFamily="@font/segoeui"
                         android:textSize="@dimen/font_large"/>
 
                     <TextView
@@ -55,7 +55,7 @@
                         android:text="Name"
                         android:textColor="@color/colorBlack"
                         android:layout_marginStart="5sp"
-                        android:fontFamily="@font/bahnschrift"
+                        android:fontFamily="@font/segoeui"
                         android:textSize="@dimen/font_large"/>
 
                     <TextView
@@ -65,7 +65,7 @@
                         android:text="Name"
                         android:textColor="@color/colorBlack"
                         android:layout_marginStart="5sp"
-                        android:fontFamily="@font/bahnschrift"
+                        android:fontFamily="@font/segoeui"
                         android:textSize="@dimen/font_large"/>
 
                 </LinearLayout>
@@ -75,9 +75,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorBlack"
-                    android:fontFamily="@font/bahnschrift"
+                    android:fontFamily="@font/segoeui"
                     android:text="Registration Number"
-                    android:layout_marginStart="20sp"
+                    android:layout_marginStart="10sp"
                     android:textSize="@dimen/font_medium"/>
             </LinearLayout>
     </androidx.cardview.widget.CardView>

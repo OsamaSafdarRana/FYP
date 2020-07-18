@@ -7,8 +7,10 @@
     <color name="colorhelp">#2096DB</color>
     <color name="colorbg">#7ACEFF</color>
     <color name="colorpb">#2096DB</color>
-    <color name="gradientTop">#67DBD4</color>
-    <color name="gradientBottom">#446AF3</color>
+    <color name="buttonorange">#F88A25</color>
+    <color name="buttonred">#F85757</color>
+    <color name="meterbgcolor">#F0F8FA</color>
+    <color name="colornotification">#F8F8F8</color>
     <color name="background_color">#456cf3</color>
     <color name="colorText">#ffffff</color>
     <color name="colorBlack">#000000</color>
@@ -16,6 +18,12 @@
     <color name="colorTextBlue">#4264f5</color>
     <color name="colorTextTeall">#67dbd4</color>
     <color name="colorTextGrey">#626262</color>
+    <color name="colorEditText">#919191</color>
+    <color name="colortxtgrey">#E2E2E2</color>
+    <color name="colortxtgreen">#31C29A</color>
+    <color name="colorgooglered">#F04434</color>
+    <color name="colorfbBlue">#375A8D</color>
+    <color name="colorgreen">#FF31C29A</color>
     <color name="colorTextPurple">#6c42f5</color>
     <color name="colorTextPrimaryHint">#a0446af3</color>
     <color name="colorTextPrimary">#446AF3</color>

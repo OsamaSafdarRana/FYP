@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_color"
+    tools:context=".View.Fragment.ReminderFragment">
+
+    <TextView
+        android:id="@+id/tv_setreminder"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="30sp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="40sp"
+        android:gravity="center"
+        android:fontFamily="@font/segoeuibold"
+        android:textSize="@dimen/font_medium"
+        android:textColor="@color/colorBlack"
+        android:text="@string/text_reminder"/>
+
+    <ImageView
+        android:id="@+id/bt_back"
+        android:layout_width="40sp"
+        android:layout_height="40sp"
+        android:layout_marginTop="30sp"
+        android:layout_marginStart="30sp"
+        android:background="@color/transparent"
+        android:src="@drawable/ic_back"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bt_continue"
+        android:layout_marginTop="20sp"
+        android:layout_marginBottom="20sp"
+        android:layout_marginStart="30sp"
+        android:layout_marginEnd="30sp"
+        android:layout_below="@id/tv_setreminder" />
+
+    <Button
+        android:id="@+id/bt_continue"
+        android:layout_width="190sp"
+        android:layout_height="56sp"
+        android:textAllCaps="false"
+        android:text="@string/text_addreminder"
+        android:layout_marginBottom="50sp"
+        android:layout_alignParentBottom="true"
+        android:fontFamily="@font/segoeuibold"
+        android:textColor="@color/colorText"
+        style="@style/ButtonStyle"/>
+</RelativeLayout>
+
+
+    <!--    <ScrollView-->
+    <!--        android:id="@+id/ll_add"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:layout_centerHorizontal="true"-->
+    <!--        android:layout_marginTop="65sp"-->
+    <!--        android:layout_above="@id/bt_continue"-->
+    <!--        android:layout_marginBottom="20sp"-->
+    <!--        android:background="@color/transparent"-->
+    <!--        android:layout_below="@id/tv_setreminder">-->
+
+    <!--        <ListView-->
+    <!--            android:id="@+id/rv_list"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginStart="30sp"-->
+    <!--            android:layout_marginEnd="30sp"-->
+    <!--            style="@style/SpinnerStyle2"/>-->
+
+    <!--        <RelativeLayout-->
+    <!--            android:id="@+id/rl_service"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:minHeight="50sp"-->
+    <!--            android:layout_marginStart="30sp"-->
+    <!--            style="@style/SpinnerStyle2"-->
+    <!--            android:layout_marginEnd="30sp">-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/tv_titleservice"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:textColor="@color/colorBlack"-->
+    <!--                android:textSize="@dimen/font_small"-->
+    <!--                android:fontFamily="@font/segoeuisemibold"/>-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/tv_titlekm"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:textColor="@color/colorBlack"-->
+    <!--                android:textSize="@dimen/font_small"-->
+    <!--                android:layout_below="@id/tv_titleservice"-->
+    <!--                android:layout_marginTop="5sp"-->
+    <!--                android:fontFamily="@font/segoeui" />-->
+    <!--        </RelativeLayout>-->
+    <!--    </ScrollView>-->

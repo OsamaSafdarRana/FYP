@@ -8,56 +8,48 @@
     android:background="@drawable/background_color"
     tools:context=".View.Fragment.ProblemFragment">
 
-    <ImageView
-        android:id="@+id/iv_car"
-        android:layout_width="wrap_content"
-        android:layout_marginTop="30sp"
-        android:clickable="true"
-        android:layout_centerHorizontal="true"
-        android:layout_height="wrap_content"
-        android:src="@drawable/car"/>
-    
-    <TextView
-        android:id="@+id/tv_problem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/iv_car"
-        android:layout_marginTop="70sp"
-        android:fontFamily="@font/bahnschrift"
-        android:textColor="@color/colorBlack"
-        android:textAlignment="center"
-        android:text="@string/text_problem"
-        android:textSize="@dimen/font_medium"
-        android:layout_centerHorizontal="true"/>
-
     <TextView
         android:id="@+id/tv_problem_statement"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_problem"
-        android:layout_marginTop="10sp"
-        android:layout_marginStart="10sp"
-        android:layout_marginEnd="10sp"
-        android:fontFamily="@font/bahnschrift"
+        android:layout_marginTop="30sp"
+        android:layout_marginStart="30sp"
+        android:layout_marginEnd="30sp"
+        android:fontFamily="@font/segoeuisemibold"
         android:textColor="@color/colorBlack"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:textSize="@dimen/font_large"
+        android:textSize="@dimen/font_small"
+        android:gravity="center"
         android:layout_centerHorizontal="true"/>
 
-    <TextView
-        android:id="@+id/tv_implementation_statement"
-        android:layout_width="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/bt_implement"
-        android:layout_marginBottom="30sp"
-        android:fontFamily="@font/bahnschrift"
+        android:layout_below="@+id/tv_problem_statement"
+        android:layout_marginTop="50sp"
+        android:layout_marginStart="10sp"
+        android:layout_marginBottom="20sp"
+        android:layout_marginEnd="10sp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_problem"
+                android:layout_width="match_parent"
+                android:layout_height="200sp"
+                android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/tv_problem_statement_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20sp"
+        android:layout_below="@id/iv_problem"
+        android:layout_marginEnd="20sp"
+        android:layout_marginTop="15sp"
+        android:fontFamily="@font/segoeui"
         android:textColor="@color/colorBlack"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:text="@string/text_implementation_statement"
-        android:textSize="@dimen/font_large"
-        android:layout_centerHorizontal="true"/>
+        android:textSize="@dimen/font_small"/>
 
     <Button
         android:id="@+id/bt_implement"
@@ -65,11 +57,12 @@
         android:layout_height="56sp"
         android:textAllCaps="false"
         android:text="@string/text_implement_solution"
-        android:textStyle="bold"
-        android:layout_marginBottom="30sp"
-        android:layout_alignParentBottom="true"
-        android:fontFamily="@font/bahnschrift"
-        android:textColor="@color/colorBlack"
+        android:layout_below="@id/tv_problem_statement_details"
+        android:layout_marginTop="50sp"
+        android:layout_marginBottom="20sp"
+        android:fontFamily="@font/segoeuibold"
+        android:textColor="@color/colorText"
         style="@style/ButtonStyle"/>
-
+        </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>

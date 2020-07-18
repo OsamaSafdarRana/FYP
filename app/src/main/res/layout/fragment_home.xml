@@ -20,13 +20,14 @@
             android:layout_width="40sp"
             android:layout_height="40sp"
             android:background="@color/transparent"
-            android:src="@drawable/menu"/>
+            android:src="@drawable/ic_info"/>
         <ImageView
             android:id="@+id/iv_car"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="60sp"
             android:layout_marginEnd="60sp"
+            android:visibility="invisible"
             android:layout_centerHorizontal="true"
             android:src="@drawable/car"/>
         <ImageButton
@@ -34,110 +35,107 @@
             android:layout_width="40sp"
             android:layout_height="40sp"
             android:background="@color/transparent"
-            android:src="@drawable/notification"/>
+            android:src="@drawable/bell"/>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_choose_option"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/ll_menu"
-        android:layout_marginTop="70sp"
-        android:fontFamily="@font/bahnschrift"
-        android:textColor="@color/colorBlack"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:text="@string/tv_choose_option"
-        android:textSize="@dimen/font_large"
-        android:layout_centerHorizontal="true"/>
-
-    <LinearLayout
-        android:id="@+id/ll_troubleshoot"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <com.github.anastr.speedviewlib.TubeSpeedometer
+        android:id="@+id/speedView"
+        android:layout_width="match_parent"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="65sp"
-        android:background="@color/transparent"
-        android:layout_below="@id/tv_choose_option">
+        android:layout_height="150sp"
+        android:layout_marginStart="50sp"
+        android:layout_marginEnd="50sp"
+        app:sv_minSpeed="0"
+        app:sv_speedTextPosition="BOTTOM_CENTER"
+        android:foregroundGravity="center"
+        app:sv_maxSpeed="100"
+        app:sv_speedTextFormat="INTEGER"
+        app:sv_withTremble="false"
+        app:sv_backgroundCircleColor="@color/meterbgcolor"
+        app:sv_unit=""
+        app:sv_speedTextSize="@dimen/font_medium"
+        app:sv_speedTextPadding="5sp"
+        app:sv_speedometerBackColor="@color/colorText"
+        app:sv_speedometerWidth="5pt"
+        android:layout_marginTop="40sp"
+        android:layout_below="@+id/ll_menu"/>
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/sp_cars"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:spinnerMode="dialog"
+        android:layout_alignStart="@id/speedView"
+        android:layout_below="@id/speedView"
+        android:layout_marginTop="30sp"/>
+
         <Button
             android:id="@+id/bt_troubleshoot"
-            android:layout_width="190sp"
-            android:layout_height="56sp"
+            android:layout_width="55pt"
+            android:layout_height="55pt"
             android:textAllCaps="false"
-            android:text="@string/text_troubleshooting"
-            android:textStyle="bold"
-            android:textColor="@color/colorBlack"
-            android:fontFamily="@font/bahnschrift"
-            style="@style/ButtonStyle"/>
-        <Button
-            android:id="@+id/bt_help1"
-            android:layout_width="28sp"
-            android:layout_marginStart="20sp"
-            android:layout_height="28sp"
-            android:fontFamily="@font/bahnschrift"
-            android:text="@string/text_help"
-            android:textStyle="bold"
-            android:textColor="@color/colorhelp"
-            style="@style/ButtonStyle"/>
-    </LinearLayout>
+            android:layout_marginTop="65sp"
+            android:background="@drawable/ic_troubleshoot"
+            android:layout_below="@+id/sp_cars"
+            android:layout_centerHorizontal="true"/>
 
     <LinearLayout
-        android:id="@+id/ll_journal"
-        android:layout_width="wrap_content"
+        android:id="@+id/ll_bottom_menu"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30sp"
-        android:background="@color/transparent"
-        android:layout_below="@id/ll_troubleshoot">
+        android:layout_marginBottom="10sp"
+        android:layout_alignParentBottom="true">
+        <Button
+            android:id="@+id/ib_home"
+            android:layout_width="match_parent"
+            android:layout_height="65sp"
+            android:text="@string/text_home"
+            android:fontFamily="@font/segoeuisemibold"
+            android:textAllCaps="false"
+            android:paddingTop="20sp"
+            android:textSize="@dimen/font_extra_small"
+            android:textColor="@color/colorgreen"
+            android:drawableTop="@drawable/ic_home"
+            android:background="@color/colorText"
+            android:layout_weight="1"/>
         <Button
             android:id="@+id/bt_journal"
-            android:layout_width="190sp"
-            android:layout_height="56sp"
-            android:fontFamily="@font/bahnschrift"
-            android:text="@string/text_journal"
-            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="65sp"
+            android:text="@string/text_remind"
+            android:paddingTop="20sp"
+            android:fontFamily="@font/segoeuisemibold"
             android:textAllCaps="false"
             android:textColor="@color/colorBlack"
-            style="@style/ButtonStyle"/>
-        <Button
-            android:id="@+id/bt_help2"
-            android:layout_width="28sp"
-            android:layout_marginStart="20sp"
-            android:layout_height="28sp"
-            android:text="@string/text_help"
-            android:textStyle="bold"
-            android:fontFamily="@font/bahnschrift"
-            android:textColor="@color/colorhelp"
-            style="@style/ButtonStyle"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/ll_guide"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30sp"
-        android:background="@color/transparent"
-        android:layout_below="@id/ll_journal">
+            android:textSize="@dimen/font_extra_small"
+            android:drawableTop="@drawable/ic_reminder_menu_icon"
+            android:background="@color/colorText"
+            android:layout_weight="1"/>
         <Button
             android:id="@+id/bt_guide"
-            android:layout_width="190sp"
-            android:layout_height="56sp"
+            android:layout_width="match_parent"
+            android:layout_height="65sp"
+            android:text="@string/text_carguide"
+            android:fontFamily="@font/segoeuisemibold"
+            android:paddingTop="20sp"
             android:textAllCaps="false"
-            android:text="@string/text_guide"
-            android:textStyle="bold"
-            android:fontFamily="@font/bahnschrift"
             android:textColor="@color/colorBlack"
-            style="@style/ButtonStyle"/>
+            android:textSize="@dimen/font_extra_small"
+            android:drawableTop="@drawable/ic_car_guide_icon"
+            android:background="@color/colorText"
+            android:layout_weight="1"/>
         <Button
-            android:id="@+id/bt_help3"
-            android:layout_width="28sp"
-            android:layout_marginStart="20sp"
-            android:layout_height="28sp"
-            android:text="@string/text_help"
-            android:textStyle="bold"
-            android:fontFamily="@font/bahnschrift"
-            android:textColor="@color/colorhelp"
-            style="@style/ButtonStyle"/>
+            android:id="@+id/bt_profile"
+            android:layout_width="match_parent"
+            android:layout_height="65sp"
+            android:layout_weight="1"
+            android:text="@string/text_profile"
+            android:fontFamily="@font/segoeuisemibold"
+            android:textAllCaps="false"
+            android:paddingTop="20sp"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/font_extra_small"
+            android:drawableTop="@drawable/ic_profile_menu_icon"
+            android:background="@color/colorText"/>
     </LinearLayout>
-</RelativeLayout>
+    </RelativeLayout>

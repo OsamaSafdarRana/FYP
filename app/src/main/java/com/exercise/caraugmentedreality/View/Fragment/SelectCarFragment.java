@@ -22,8 +22,10 @@ import com.exercise.caraugmentedreality.R;
 import com.exercise.caraugmentedreality.View.Activity.BaseActivity;
 import com.exercise.caraugmentedreality.View.Activity.CarRegistrationActivity;
 import com.exercise.caraugmentedreality.View.Activity.HomeActivity;
+import com.exercise.caraugmentedreality.View.Activity.SelectCarActivity;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.firebase.ui.database.ObservableSnapshotArray;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -42,7 +44,7 @@ public class SelectCarFragment extends BaseFragment implements SelectCarContract
     private SelectCarPresenter mPresenter;
 
     private FirebaseAuth mAuth;
-    DatabaseReference userRef,carsRef;
+
     String uid,email;
 
     @BindView(R.id.rv_carslist)
@@ -51,6 +53,7 @@ public class SelectCarFragment extends BaseFragment implements SelectCarContract
     @BindView(R.id.bt_addcar)
     Button bt_addcar;
 
+    DatabaseReference userRef,carsRef;
     FirebaseRecyclerAdapter<Car, carListViewHolder> firebaseRecyclerAdapter;
 
     public SelectCarFragment() {
@@ -100,14 +103,14 @@ public class SelectCarFragment extends BaseFragment implements SelectCarContract
     @Override
     public void onStop() {
         super.onStop();
-
         firebaseRecyclerAdapter.stopListening();
     }
 
-    private void displayAllCars() {
+    public void displayAllCars() {
         FirebaseRecyclerOptions<Car> options =
                 new FirebaseRecyclerOptions.Builder<Car>()
                         .setQuery(carsRef, Car.class)
+                        .setSnapshotArray(firebaseRecyclerAdapter.getSnapshots())
                         .build();
 
         firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Car, carListViewHolder>(options) {
@@ -124,7 +127,7 @@ public class SelectCarFragment extends BaseFragment implements SelectCarContract
                             public void onClick(View v) {
                                 final String registNumber = getItem(position).getRegistrationNumber();
                                 // todo intent
-                                Intent intent = new Intent(getActivity(),HomeActivity.class);
+                                Intent intent = new Intent(getActivity(), SelectCarActivity.class);
                                 intent.putExtra("RegistrationNumber",registNumber);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
@@ -132,7 +135,18 @@ public class SelectCarFragment extends BaseFragment implements SelectCarContract
                         });
                     }
 
-                    @NonNull
+            @Override
+            public int getItemCount() {
+                return super.getItemCount();
+            }
+
+            @NonNull
+            @Override
+            public ObservableSnapshotArray<Car> getSnapshots() {
+                return super.getSnapshots();
+            }
+
+            @NonNull
                     @Override
                     public carListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_car,parent,false);
@@ -179,7 +193,7 @@ public class SelectCarFragment extends BaseFragment implements SelectCarContract
     }
     @Override
     public void showProgress() {
-
+        showProgress("Please wait...");
     }
 
     @Override

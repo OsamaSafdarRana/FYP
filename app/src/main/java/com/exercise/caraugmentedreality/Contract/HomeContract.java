@@ -13,10 +13,6 @@ public interface HomeContract {
         void moveToGuide();
         void moveToJournal();
         void moveToNotifications();
-        void moveToHelp1();
-        void moveToHelp2();
-        void moveToHelp3();
-        void fetchRegNo();
         void moveToSignIn();
         void showMenu();
     }

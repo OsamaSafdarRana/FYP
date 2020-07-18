@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+    <item android:id="@+id/interior"
+        android:title="@string/text_interior"
+        android:icon="@drawable/guide"/>
+    </group>
+    <group>
+    <item android:id="@+id/exterior"
+        android:title="@string/text_exterior"
+        android:icon="@drawable/guide"/>
+    </group>
+    <group>
+    <item android:id="@+id/engine"
+        android:title="@string/text_enginebay"
+        android:icon="@drawable/guide"/>
+    </group>
+</menu>

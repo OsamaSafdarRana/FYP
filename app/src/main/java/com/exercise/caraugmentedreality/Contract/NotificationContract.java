@@ -4,7 +4,7 @@ public interface NotificationContract {
     interface View{
         void showProgress();
         void showMessage(String message);
-        void openNotification();
+        void moveToHomeScreen();
     }
     interface Presenter {
         // validation methods

@@ -40,42 +40,72 @@
         android:src="@drawable/notification"/>
 
     <TextView
-        android:id="@+id/tv_hs_text"
+        android:id="@+id/tv_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/iv_car"
-        android:layout_marginTop="60sp"
-        android:fontFamily="@font/bahnschrift"
+        android:layout_marginTop="30sp"
+        android:layout_marginStart="30sp"
+        android:layout_marginEnd="30sp"
+        android:fontFamily="@font/segoeui"
         android:textColor="@color/colorBlack"
-        android:textStyle="bold"
         android:textAlignment="center"
-        android:text="@string/tv_health_score"
+        android:text="@string/text_description"
         android:textSize="@dimen/font_large"
         android:layout_centerHorizontal="true"/>
 
     <TextView
-        android:id="@+id/tv_health_score"
+        android:id="@+id/tv_clickhere"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_hs_text"
-        android:layout_marginTop="60sp"
-        android:fontFamily="@font/bahnschrift"
-        android:textColor="@color/colorBlack"
+        android:layout_below="@id/tv_description"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5sp"
         android:textStyle="bold"
+        android:text="@string/text_clickhere"
+        android:textColor="@color/design_default_color_primary_dark"
+        android:textSize="@dimen/font_medium"/>
+
+    <TextView
+        android:id="@+id/tv_healthscore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_below="@+id/tv_clickhere"
+        android:layout_marginTop="50sp"
         android:textAlignment="center"
-        android:textSize="@dimen/font_extralarge"
-        android:layout_centerHorizontal="true"/>
+        android:gravity="center"
+        android:textColor="@color/colorBlack"
+        android:visibility="invisible"
+        android:layout_alignStart="@id/tv_description"
+        android:layout_alignEnd="@id/tv_description"
+        android:textSize="@dimen/font_large"/>
+
+    <TextView
+        android:id="@+id/tv_formula"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_healthscore"
+        android:layout_marginTop="20sp"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:visibility="invisible"
+        android:text="@string/text_clickformula"
+        android:textColor="@color/design_default_color_primary_dark"
+        android:layout_alignStart="@id/tv_description"
+        android:layout_alignEnd="@id/tv_description"
+        android:textSize="@dimen/font_medium"/>
 
     <Button
-        android:id="@+id/bt_update"
+        android:id="@+id/bt_continue"
         android:layout_width="190sp"
         android:layout_height="56sp"
         android:textAllCaps="false"
-        android:text="@string/text_update"
+        android:text="@string/text_healthscore"
         android:textStyle="bold"
         android:layout_marginBottom="30sp"
         android:layout_alignParentBottom="true"
-        android:fontFamily="@font/bahnschrift"
+        android:fontFamily="@font/segoeui"
         android:textColor="@color/colorBlack"
         style="@style/ButtonStyle"/>
 </RelativeLayout>

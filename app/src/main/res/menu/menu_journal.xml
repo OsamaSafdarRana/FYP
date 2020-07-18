@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+    <item android:id="@+id/add"
+        android:title="@string/text_add_reminder"
+        android:icon="@drawable/ic_reminder_menu_icon"/>
+    </group>
+    <group>
+    <item android:id="@+id/show"
+        android:title="@string/text_show_reminder"
+        android:icon="@drawable/ic_reminder_menu_icon"/>
+    </group>
+</menu>

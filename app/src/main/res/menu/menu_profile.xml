@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+    <item android:id="@+id/email"
+        android:title="Email ID"
+        android:icon="@drawable/mail"/>
+    </group>
+    <group>
+    <item android:id="@+id/logout"
+        android:title="@string/text_logoutt"
+        android:icon="@drawable/ic_logout"/>
+    </group>
+</menu>
