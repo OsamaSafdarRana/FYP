@@ -1,15 +1,13 @@
 package com.exercise.caraugmentedreality.View.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
 import com.exercise.caraugmentedreality.R;
-import com.exercise.caraugmentedreality.View.Fragment.SelectCarFragment;
+import com.exercise.caraugmentedreality.View.Fragment.CarsFragment;
 
-public class SelectCarActivity extends BaseActivity {
+public class CarsActivity extends BaseActivity {
 
-    SelectCarFragment mFragment;
+    CarsFragment mFragment;
 
     @Override
     protected void onPreStart() {
@@ -22,7 +20,7 @@ public class SelectCarActivity extends BaseActivity {
         super.onPostStart(savedInstanceState);
 
         if(savedInstanceState == null){
-            mFragment = new SelectCarFragment();
+            mFragment = new CarsFragment();
             addFragment(R.id.fragmentContainer,mFragment);
         }
     }

@@ -16,8 +16,10 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.exercise.caraugmentedreality.Adapter.NotificationAdapter;
 import com.exercise.caraugmentedreality.Contract.ReminderContract;
 import com.exercise.caraugmentedreality.Model.Car;
+import com.exercise.caraugmentedreality.Model.ListItem;
 import com.exercise.caraugmentedreality.Model.Reminder;
 import com.exercise.caraugmentedreality.Presenter.ReminderPresenter;
 import com.exercise.caraugmentedreality.R;
@@ -191,7 +193,21 @@ public class ReminderFragment extends BaseFragment implements ReminderContract.V
 }
 
 
-
-
-
-
+//journalRef = FirebaseDatabase.getInstance().getReference().child("Journal").child(uid);
+////
+////            try {
+////                journalRef.child(registNumber).addValueEventListener(new ValueEventListener() {
+////                    @Override
+////                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+////                        if (dataSnapshot.exists()) {
+////                            mileage= dataSnapshot.child("SpeedometerReading").getValue().toString();
+////                        }
+////                    }
+////                    @Override
+////                    public void onCancelled(@NonNull DatabaseError databaseError) {
+////
+////                    }
+////                });
+////            }catch (NullPointerException NPexc){
+////                showMessage(NPexc.toString());
+////            }

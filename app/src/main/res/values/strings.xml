@@ -2,7 +2,8 @@
     <string name="app_name">Car Augmented Reality</string>
     <string name="tv_choose_option">Kindly choose from\nthe following options</string>
     <string name="tv_select_option">Kindly select from\nthe following options</string>
-    <string name="tv_addcar">Add (Another) Car</string>
+    <string name="tv_addcar">Add Another Car</string>
+    <string name="tv_yourcars">Your Cars</string>
     <string name="tv_select_car">Kindly select from\nthe following cars</string>
     <string name="tv_enter_details">Lets Setup your Car Profile!</string>
     <string name="text_description">Details of car will be fetched from history.</string>

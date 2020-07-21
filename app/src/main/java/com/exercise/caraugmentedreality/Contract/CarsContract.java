@@ -1,10 +1,10 @@
 package com.exercise.caraugmentedreality.Contract;
 
-public interface SelectCarContract {
+public interface CarsContract {
     interface View {
         void showProgress();
         void showMessage(String message);
-        void fetchData();
+        void moveToHomeScreen();
         void saveToDB();
         void moveToAddCarScreen();
     }

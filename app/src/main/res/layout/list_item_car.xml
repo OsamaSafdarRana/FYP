@@ -19,13 +19,14 @@
             <LinearLayout
                 android:id="@+id/ll_tv"
                 android:orientation="vertical"
-                style="@style/ButtonStyle"
+                style="@style/SpinnerStyle2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <LinearLayout
                     android:id="@+id/ll_cardetails"
                     android:orientation="horizontal"
+                    android:layout_marginTop="5sp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <TextView
@@ -45,30 +46,43 @@
                         android:text="Name"
                         android:textColor="@color/colorBlack"
                         android:layout_marginStart="5sp"
-                        android:fontFamily="@font/segoeui"
-                        android:textSize="@dimen/font_large"/>
-
-                    <TextView
-                        android:id="@+id/tv_car_var"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Name"
-                        android:textColor="@color/colorBlack"
-                        android:layout_marginStart="5sp"
-                        android:fontFamily="@font/segoeui"
-                        android:textSize="@dimen/font_large"/>
-
-                    <TextView
-                        android:id="@+id/tv_car_year"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Name"
-                        android:textColor="@color/colorBlack"
-                        android:layout_marginStart="5sp"
+                        android:textAlignment="textEnd"
+                        android:gravity="end"
                         android:fontFamily="@font/segoeui"
                         android:textSize="@dimen/font_large"/>
 
                 </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_car_var"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name"
+                    android:textColor="@color/colorBlack"
+                    android:layout_marginStart="10sp"
+                    android:fontFamily="@font/segoeui"
+                    android:textSize="@dimen/font_large"/>
+
+                <TextView
+                    android:id="@+id/tv_car_year"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name"
+                    android:textColor="@color/colorBlack"
+                    android:layout_marginStart="10sp"
+                    android:fontFamily="@font/segoeui"
+                    android:textSize="@dimen/font_large"/>
+
+                <TextView
+                    android:id="@+id/tv_car_capacity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorBlack"
+                    android:fontFamily="@font/segoeui"
+                    android:text="Capacity"
+                    android:layout_marginStart="10sp"
+                    android:layout_marginBottom="5sp"
+                    android:textSize="@dimen/font_medium"/>
 
                 <TextView
                     android:id="@+id/tv_car_regno"
@@ -78,7 +92,20 @@
                     android:fontFamily="@font/segoeui"
                     android:text="Registration Number"
                     android:layout_marginStart="10sp"
+                    android:layout_marginBottom="5sp"
                     android:textSize="@dimen/font_medium"/>
+
+                <TextView
+                    android:id="@+id/tv_delete"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/notificationRed"
+                    android:fontFamily="@font/segoeui"
+                    android:text="Long press to delete"
+                    android:layout_marginBottom="5sp"
+                    android:gravity="end"
+                    android:layout_marginEnd="5sp"
+                    android:textSize="@dimen/font_extra_small"/>
             </LinearLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>

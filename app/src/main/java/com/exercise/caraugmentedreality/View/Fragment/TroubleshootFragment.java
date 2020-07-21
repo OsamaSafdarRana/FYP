@@ -154,14 +154,14 @@ public class TroubleshootFragment extends BaseFragment implements TroubleshootCo
                         rg_ans.clearCheck();
                     } else if (tv_question.getText() == questions[3]) {
                         rg_ans.clearCheck();
-                        problem = "Problematic Component: Radiator";
+                        problem = "Problematic Component is Radiator";
                         tv_question.setText(problem);
                         rg_ans.setVisibility(View.INVISIBLE);
                         bt_continue.setAlpha(1);
                         bt_continue.setClickable(true);
                     } else if (tv_question.getText() == questions[4]) {
                         rg_ans.clearCheck();
-                        problem = "Problematic Component: Engine Head";
+                        problem = "Problematic Component is Engine Head";
                         tv_question.setText(problem);
                         rg_ans.setVisibility(View.INVISIBLE);
                         bt_continue.setAlpha(1);
@@ -177,7 +177,7 @@ public class TroubleshootFragment extends BaseFragment implements TroubleshootCo
                         tv_question.setText(questions[8]);
                     } else if (tv_question.getText() == questions[8]) {
                         rg_ans.clearCheck();
-                        problem = "Problematic Component: Battery (Hint: Battery fluid level is low).";
+                        problem = "Problematic Component is Battery";
                         tv_question.setText(problem);
                         rg_ans.setVisibility(View.INVISIBLE);
                         bt_continue.setAlpha(1);
@@ -186,7 +186,7 @@ public class TroubleshootFragment extends BaseFragment implements TroubleshootCo
                         tv_question.setText(questions[10]);
                     } else if (tv_question.getText() == questions[10]) {
                         rg_ans.clearCheck();
-                        problem = "Fuel Tank is Empty.";
+                        problem = "Problematic Component is Empty Fuel Tank";
                         tv_question.setText(problem);
                         rg_ans.setVisibility(View.INVISIBLE);
                         bt_continue.setAlpha(1);
@@ -210,7 +210,7 @@ public class TroubleshootFragment extends BaseFragment implements TroubleshootCo
                         tv_question.setText(questions[4]);
                     } else if (tv_question.getText() == questions[4]) {
                         rg_ans.clearCheck();
-                        problem = "Your car is doing Missing either because of some fuses or electric wiring or engine plugs.";
+                        problem = "Problematic Component is Missing Current. Either because of Fuses or Electric Wiring or Engine Plugs.";
                         tv_question.setText(problem);
                         rg_ans.setVisibility(View.INVISIBLE);
                         bt_continue.setAlpha(1);
@@ -226,22 +226,21 @@ public class TroubleshootFragment extends BaseFragment implements TroubleshootCo
                         tv_question.setText(questions[8]);
                     } else if (tv_question.getText() == questions[8]) {
                         rg_ans.clearCheck();
-                        problem = "Does not seem to be a battery problem. Check battery terminals for confirmation.\n" +
-                                "Otherwise Contact nearby mechanic.";
+                        problem = "Does not seem to be a battery problem. Check battery terminals for confirmation.";
                         tv_question.setText(problem);
                         rg_ans.setVisibility(View.INVISIBLE);
                         bt_continue.setAlpha(1);
                         bt_continue.setClickable(true);
                     } else if (tv_question.getText() == questions[9]) {
                         rg_ans.clearCheck();
-                        problem = "Problem in the Self of car";
+                        problem = "Problematic Component is Car's Self";
                         tv_question.setText(problem);
                         rg_ans.setVisibility(View.INVISIBLE);
                         bt_continue.setAlpha(1);
                         bt_continue.setClickable(true);
                     } else if (tv_question.getText() == questions[10]) {
                         rg_ans.clearCheck();
-                        problem = "Looks like your car is not injecting petrol at all. Reason can be:\n1- Fuel Pump\n2-Fuel Needle not working properly" +
+                        problem = "Your car is not injecting petrol. Reason can be:\n1- Fuel Pump\n2-Fuel Needle not working properly" +
                                 "\n3-Fuel pipe is not clean or leaked.";
                         tv_question.setText(problem);
                         rg_ans.setVisibility(View.INVISIBLE);
@@ -305,19 +304,19 @@ public class TroubleshootFragment extends BaseFragment implements TroubleshootCo
             }
             for(int i=0; i<fuel_guage.length; i++) {
                 if (problem_written.contains(fuel_guage[i])) {
-                    problem = "Problem is relating to Fuel";
+                    problem = "Problem Component is Empty Fuel Tank";
                     moveToProblemScreen(problem);
                 }
             }
             for(int i=0; i<self.length; i++) {
                 if (problem_written.contains(self[i])) {
-                    problem = "Problem is relating to Self of your car";
+                    problem = "Problematic Component is Car's Self";
                     moveToProblemScreen(problem);
                 }
             }
             for(int i=0; i<missing.length; i++) {
                 if (problem_written.contains(missing[i])) {
-                    problem = "Your car is doing missing.";
+                    problem = "Your car is doing missing current.";
                     moveToProblemScreen(problem);
                 }
             }

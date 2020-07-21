@@ -138,6 +138,17 @@
                 android:hint="@string/hint_variant"
                 android:fontFamily="@font/segoeui"/>
 
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/sp_capacity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="50sp"
+                    android:spinnerMode="dialog"
+                    android:layout_marginTop="20sp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignStart="@id/et_reg_no"
+                    android:layout_below="@id/et_variant"/>
+
             <Button
                 android:id="@+id/bt_continue"
                 android:layout_width="190sp"
@@ -145,7 +156,7 @@
                 android:textAllCaps="false"
                 android:text="@string/text_continue"
                 android:textStyle="bold"
-                android:layout_below="@id/et_variant"
+                android:layout_below="@id/sp_capacity"
                 android:layout_marginBottom="30sp"
                 android:layout_marginTop="50sp"
                 android:fontFamily="@font/segoeui"

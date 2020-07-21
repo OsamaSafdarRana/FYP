@@ -53,6 +53,7 @@
         app:sv_withTremble="false"
         app:sv_backgroundCircleColor="@color/meterbgcolor"
         app:sv_unit=""
+        android:foreground="@drawable/ic_carmenu"
         app:sv_speedTextSize="@dimen/font_medium"
         app:sv_speedTextPadding="5sp"
         app:sv_speedometerBackColor="@color/colorText"
@@ -74,9 +75,9 @@
             android:layout_width="55pt"
             android:layout_height="55pt"
             android:textAllCaps="false"
-            android:layout_marginTop="65sp"
             android:background="@drawable/ic_troubleshoot"
-            android:layout_below="@+id/sp_cars"
+            android:layout_above="@id/ll_bottom_menu"
+            android:layout_marginBottom="10sp"
             android:layout_centerHorizontal="true"/>
 
     <LinearLayout

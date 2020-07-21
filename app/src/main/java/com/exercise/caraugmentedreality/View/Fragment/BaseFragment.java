@@ -102,7 +102,7 @@ public abstract class BaseFragment extends android.app.Fragment {
      */
 
     protected void showToastMessage(String message) {
-        Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
     }
 
     public void focusOnNextEditableView(final EditText current, final EditText next, final int size, final EditText pervious) {

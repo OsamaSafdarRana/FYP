@@ -1,17 +1,26 @@
 package com.exercise.caraugmentedreality.Model;
 
 public class Car {
-    private String Manufacturer, Model, Variant, Year, RegistrationNumber;
+    private String Manufacturer, Model, Variant, Year, RegistrationNumber,EngineCapacity;
 
     public Car() {
     }
 
-    public Car(String manufacturer, String model, String variant, String year, String registrationNumber) {
+    public Car(String manufacturer, String model, String variant, String year, String registrationNumber,String engineCapacity) {
         Manufacturer = manufacturer;
         Model = model;
         Variant = variant;
         Year = year;
         RegistrationNumber = registrationNumber;
+        EngineCapacity = engineCapacity;
+    }
+
+    public String getEngineCapacity() {
+        return EngineCapacity;
+    }
+
+    public void setEngineCapacity(String engineCapacity) {
+        EngineCapacity = engineCapacity;
     }
 
     public String getManufacturer() {

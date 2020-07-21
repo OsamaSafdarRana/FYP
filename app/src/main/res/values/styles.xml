@@ -70,7 +70,6 @@
         <item name="android:drawableEnd">@drawable/arrowdown</item>
         <item name="android:drawableStart">@drawable/carspinner</item>
         <item name="android:textColor">@color/colorBlack</item>
-        <item name="android:layout_height">@dimen/button_height</item>
     </style>
 
     <style name="SpinnerStyle2">
@@ -83,7 +82,6 @@
         <item name="android:dropDownSelector">@color/colorBlack</item>
         <item name="android:textColor">@color/colorBlack</item>
         <item name="android:color">@color/colorBlack</item>
-        <item name="android:layout_height">@dimen/button_height</item>
     </style>
 
     <style name="SpinnerStyle3">
@@ -94,7 +92,7 @@
         <item name="android:drawableEnd">@drawable/arrowdown</item>
 <!--        <item name="android:drawableStart">@drawable/carspinner</item>-->
         <item name="android:textColor">@color/colorBlack</item>
-        <item name="android:layout_height">@dimen/button_height</item>
+        <item name="android:layout_width">match_parent</item>
     </style>
 
     <style name="SpinnerStyle4">

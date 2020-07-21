@@ -14,12 +14,14 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 
 import com.exercise.caraugmentedreality.Contract.AddHistoryContract;
 import com.exercise.caraugmentedreality.Presenter.AddHistoryPresenter;
 import com.exercise.caraugmentedreality.R;
 import com.exercise.caraugmentedreality.View.Activity.HomeActivity;
+import com.exercise.caraugmentedreality.View.Activity.ShowHistoryActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -54,6 +56,8 @@ public class AddHistoryFragment extends BaseFragment implements AddHistoryContra
     Spinner sp_oil_thickness;
     @BindView(R.id.bt_continue)
     Button bt_continue;
+    @BindView(R.id.bt_back)
+    ImageButton bt_back;
 
     String[] oilThicknessarray = {"Tap to select","20W-50 (3000/4000)","10W-40 (5000)","5W-30 (9000)","0W-20 (9000)"};
 
@@ -98,6 +102,12 @@ public class AddHistoryFragment extends BaseFragment implements AddHistoryContra
                     storeData();
                 }
             });
+            bt_back.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    moveToHomeScreen();
+                }
+            });
 
             DatePickerDialog.OnDateSetListener date3 = new DatePickerDialog.OnDateSetListener() {
 
@@ -108,8 +118,6 @@ public class AddHistoryFragment extends BaseFragment implements AddHistoryContra
                     myCalendar.set(Calendar.YEAR, year);
                     myCalendar.set(Calendar.MONTH, monthOfYear);
                     myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-
-
                     updateLabel();
                 }
             };
@@ -149,15 +157,6 @@ public class AddHistoryFragment extends BaseFragment implements AddHistoryContra
     public void moveToNotifications() {
 
     }
-
-    @Override
-    public void moveToHomeScreen() {
-        Intent intent = new Intent(getActivity(), HomeActivity.class);
-        intent.putExtra("Score",healthscore);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-    }
-
 
     @Override
     public void storeData() {
@@ -218,6 +217,14 @@ public class AddHistoryFragment extends BaseFragment implements AddHistoryContra
         });
         showMessage("History Added Successfully");
         moveToHomeScreen();
+    }
+
+    @Override
+    public void moveToHomeScreen() {
+        Intent intent = new Intent(getActivity(), HomeActivity.class);
+        intent.putExtra("RegistrationNumber",registNumber);
+        getActivity().finish();
+        startActivity(intent);
     }
 
     private void updateLabel() {

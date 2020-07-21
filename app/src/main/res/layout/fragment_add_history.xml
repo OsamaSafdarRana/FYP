@@ -144,7 +144,9 @@
             <androidx.appcompat.widget.AppCompatSpinner
                 android:id="@+id/sp_oil_thickness"
                 android:layout_width="match_parent"
-                android:layout_height="50sp"
+                android:layout_height="wrap_content"
+                android:minHeight="50sp"
+                android:layout_alignParentEnd="true"
                 android:layout_alignStart="@id/tv_mileage"
                 android:spinnerMode="dialog"
                 android:layout_below="@id/tv_oil_thickness"/>

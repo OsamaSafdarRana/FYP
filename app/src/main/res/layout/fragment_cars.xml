@@ -4,48 +4,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_color"
-    tools:context=".View.Fragment.SelectCarFragment">
+    tools:context=".View.Fragment.CarsFragment">
 
-    <ImageView
-        android:id="@+id/iv_car"
-        android:layout_width="150sp"
-        android:layout_height="80sp"
+    <ImageButton
+        android:id="@+id/bt_back"
+        android:layout_width="40sp"
+        android:layout_height="40sp"
         android:layout_marginTop="30sp"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/car"/>
+        android:layout_marginStart="20sp"
+        android:layout_alignParentStart="true"
+        android:background="@color/transparent"
+        android:src="@drawable/ic_back"/>
 
     <TextView
         android:id="@+id/tv_choose_option"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/iv_car"
         android:layout_marginTop="30sp"
-        android:fontFamily="@font/segoeui"
+        android:fontFamily="@font/segoeuibold"
         android:textColor="@color/colorBlack"
         android:textStyle="bold"
         android:textAlignment="center"
-        android:text="@string/tv_select_car"
-        android:textSize="@dimen/font_large"
+        android:text="@string/tv_yourcars"
+        android:textSize="@dimen/font_medium"
         android:layout_centerHorizontal="true"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_carslist"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginStart="20sp"
+        android:layout_marginEnd="20sp"
         android:layout_below="@+id/tv_choose_option"
-        android:layout_above="@id/ll_car"
+        android:layout_above="@id/bt_addcar"
+        android:layout_marginBottom="10sp"
         android:layout_marginTop="10sp">
     </androidx.recyclerview.widget.RecyclerView>
 
-    <LinearLayout
-        android:id="@+id/ll_car"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10sp"
-        android:background="@color/transparent"
-        android:layout_marginBottom="20sp"
-        android:layout_alignParentBottom="true">
         <Button
             android:id="@+id/bt_addcar"
             android:layout_width="220sp"
@@ -53,19 +48,11 @@
             android:textAllCaps="false"
             android:textStyle="bold"
             android:text="@string/tv_addcar"
+            android:layout_marginBottom="30sp"
+            android:layout_alignParentBottom="true"
             android:textColor="@color/colorBlack"
             android:fontFamily="@font/segoeui"
             style="@style/ButtonStyle"/>
-        <Button
-            android:id="@+id/bt_help"
-            android:layout_width="30sp"
-            android:layout_marginStart="5sp"
-            android:layout_height="30sp"
-            android:fontFamily="@font/segoeui"
-            android:text="@string/text_help"
-            android:textStyle="bold"
-            android:textColor="@color/colorhelp"
-            style="@style/ButtonStyle"/>
-    </LinearLayout>
+
 
 </RelativeLayout>

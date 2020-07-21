@@ -3,12 +3,12 @@
 <TextView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="50sp"
-    android:textSize="20sp"
+    android:layout_height="wrap_content"
+    android:minHeight="50sp"
+    android:textSize="@dimen/font_input"
     android:gravity="center_vertical"
-    android:textColor="#000000"
+    android:textColor="@color/colorBlack"
     style="@style/SpinnerStyle3"
     android:paddingStart="15sp"
     android:paddingEnd="15sp"
-    android:drawablePadding="10sp"
     android:textColorHint="@color/colorBlack" />

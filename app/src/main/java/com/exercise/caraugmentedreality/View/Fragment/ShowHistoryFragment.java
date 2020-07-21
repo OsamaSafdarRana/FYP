@@ -103,14 +103,6 @@ public class ShowHistoryFragment extends BaseFragment implements ShowHistoryCont
     }
 
     @Override
-    public void moveToAddHistory() {
-        Intent intent = new Intent(getActivity(), AddHistoryActivity.class);
-        intent.putExtra("RegistrationNumber",registNumber);
-        getActivity().finish();
-        startActivity(intent);
-    }
-
-    @Override
     public void moveOnBack() {
         Intent intent = new Intent(getActivity(), HomeActivity.class);
         getActivity().finish();
@@ -124,8 +116,10 @@ public class ShowHistoryFragment extends BaseFragment implements ShowHistoryCont
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if (dataSnapshot.exists()) {
-                        tv_mileage.setText(dataSnapshot.getValue().toString());
-                    }
+                        try {
+                            tv_mileage.setText(dataSnapshot.getValue().toString());
+                        }catch (NullPointerException ex){}
+                        }
                 }
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -136,7 +130,9 @@ public class ShowHistoryFragment extends BaseFragment implements ShowHistoryCont
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if (dataSnapshot.exists()) {
-                        tv_av_drive.setText(dataSnapshot.getValue().toString());
+                        try {
+                            tv_av_drive.setText(dataSnapshot.getValue().toString());
+                        }catch (NullPointerException ex){}
                     }
                 }
                 @Override
@@ -148,7 +144,10 @@ public class ShowHistoryFragment extends BaseFragment implements ShowHistoryCont
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if (dataSnapshot.exists()) {
-                        tvEngineOil.setText(dataSnapshot.getValue().toString());
+                        try {
+                            tvEngineOil.setText(dataSnapshot.getValue().toString());
+                        }catch (NullPointerException ex){}
+
                     }
                 }
                 @Override
@@ -160,7 +159,9 @@ public class ShowHistoryFragment extends BaseFragment implements ShowHistoryCont
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if (dataSnapshot.exists()) {
-                        tv_oil_thickness.setText(dataSnapshot.getValue().toString());
+                        try {
+                            tv_oil_thickness.setText(dataSnapshot.getValue().toString());
+                        }catch (NullPointerException ex){}
                     }
                 }
                 @Override
@@ -171,5 +172,19 @@ public class ShowHistoryFragment extends BaseFragment implements ShowHistoryCont
         }catch (NullPointerException NPexc){
             showMessage(NPexc.toString());
         }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    public void moveToAddHistory() {
+        Intent intent = new Intent(getActivity(), AddHistoryActivity.class);
+        intent.putExtra("RegistrationNumber",registNumber);
+        onPause();
+        getActivity().finish();
+        startActivity(intent);
     }
 }

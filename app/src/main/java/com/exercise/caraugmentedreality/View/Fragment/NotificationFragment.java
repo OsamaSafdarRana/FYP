@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import com.exercise.caraugmentedreality.Adapter.NotificationAdapter;
 import com.exercise.caraugmentedreality.Contract.NotificationContract;
@@ -34,13 +35,16 @@ public class NotificationFragment extends BaseFragment implements NotificationCo
 
     private NotificationPresenter mPresenter;
 
+    @BindView(R.id.bt_back)
+    ImageButton bt_back;
+
     @BindView(R.id.recyclerview_notifications)
     RecyclerView recyclerView;
 
     private FirebaseAuth mAuth;
     DatabaseReference  notificationRef;
 
-    String uid,registNumber;
+    String uid,registNumber,mileage;
 
     private RecyclerView.Adapter adapter;
     private List<ListItem> listItems;
@@ -67,15 +71,37 @@ public class NotificationFragment extends BaseFragment implements NotificationCo
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+            bt_back.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    moveToHomeScreen();
+                }
+            });
+
             try {
-                notificationRef.child(registNumber).child("DaysLeft").addValueEventListener(new ValueEventListener() {
+                notificationRef.child(registNumber).child("SpeedometerReading").addValueEventListener(new ValueEventListener() {
+
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if(dataSnapshot.exists()) {
+                            mileage = dataSnapshot.getValue().toString();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+                    notificationRef.child(registNumber).child("DaysLeft").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()) {
                             for (int i =0;i<=dataSnapshot.getChildrenCount();i++){
                                 ListItem listItem = new ListItem(
                                         "Oil Change",
-                                        "No of Days left: "+dataSnapshot.getValue().toString()
+                                        "No of Days left: "+dataSnapshot.getValue().toString()+
+                                                " for mileage "+ mileage
                                 );
                                 listItems.add(listItem);
                             }

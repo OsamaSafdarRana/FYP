@@ -1,7 +1,5 @@
 package com.exercise.caraugmentedreality.View.Fragment;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,7 +14,7 @@ import com.exercise.caraugmentedreality.R;
 import com.exercise.caraugmentedreality.View.Activity.CarRegistrationActivity;
 import com.exercise.caraugmentedreality.View.Activity.HomeActivity;
 import com.exercise.caraugmentedreality.View.Activity.LoginActivity;
-import com.exercise.caraugmentedreality.View.Activity.SelectCarActivity;
+import com.exercise.caraugmentedreality.View.Activity.CarsActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 import butterknife.BindView;
@@ -101,7 +99,7 @@ public class MenuFragment extends BaseFragment implements MenuContract.View {
 
     @Override
     public void moveToSelectCar() {
-        Intent intent= new Intent(getActivity(), SelectCarActivity.class);
+        Intent intent= new Intent(getActivity(), CarsActivity.class);
         startActivity(intent);
     }
 

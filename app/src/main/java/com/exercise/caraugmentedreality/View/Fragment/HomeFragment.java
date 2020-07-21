@@ -1,6 +1,5 @@
 package com.exercise.caraugmentedreality.View.Fragment;
 
-import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,13 +10,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.cocosw.bottomsheet.BottomSheet;
 import com.exercise.caraugmentedreality.Contract.HomeContract;
@@ -27,21 +22,15 @@ import com.exercise.caraugmentedreality.R;
 import com.exercise.caraugmentedreality.View.Activity.AddHistoryActivity;
 import com.exercise.caraugmentedreality.View.Activity.AddReminderActivity;
 import com.exercise.caraugmentedreality.View.Activity.CarRegistrationActivity;
+import com.exercise.caraugmentedreality.View.Activity.CarsActivity;
 import com.exercise.caraugmentedreality.View.Activity.EngineGuideActivity;
 import com.exercise.caraugmentedreality.View.Activity.ExternalGuideActivity;
-import com.exercise.caraugmentedreality.View.Activity.HomeActivity;
 import com.exercise.caraugmentedreality.View.Activity.InternalGuideActivity;
 import com.exercise.caraugmentedreality.View.Activity.LoginActivity;
-import com.exercise.caraugmentedreality.View.Activity.MenuActivity;
 import com.exercise.caraugmentedreality.View.Activity.NotificationActivity;
 import com.exercise.caraugmentedreality.View.Activity.ReminderActivity;
 import com.exercise.caraugmentedreality.View.Activity.ShowHistoryActivity;
 import com.exercise.caraugmentedreality.View.Activity.TroubleshootActivity;
-import com.exercise.caraugmentedreality.View.Activity.TroublshootOptionsActivity;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.firebase.ui.database.ObservableSnapshotArray;
-import com.github.anastr.speedviewlib.SpeedView;
 import com.github.anastr.speedviewlib.TubeSpeedometer;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -49,8 +38,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import org.apache.velocity.util.ArrayListWrapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,7 +47,6 @@ import butterknife.BindView;
 public class HomeFragment extends BaseFragment implements HomeContract.View {
 
     private HomePresenter mPresenter;
-    private SelectCarFragment mSelectCarFragment;
 
     @BindView(R.id.bt_notification)
     ImageButton bt_notification;
@@ -90,7 +76,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
 
     public HomeFragment() {
         mPresenter = new HomePresenter(this);
-        mSelectCarFragment = new SelectCarFragment();
         mAuth = FirebaseAuth.getInstance();
         uid = mAuth.getCurrentUser().getUid();
         email = mAuth.getCurrentUser().getEmail();
@@ -108,9 +93,12 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
     protected void onPostStart(Bundle savedInstanceState) {
         super.onPostStart(savedInstanceState);
         if (savedInstanceState == null) {
+            int lastSelectedItem= sp_cars.getSelectedItemPosition();
+            sp_cars.setSelection(lastSelectedItem);
+
             carList = new ArrayList<Car>();
             carRegistration = new ArrayList<String>();
-            scoreFromAdd = getActivity().getIntent().getStringExtra("Score");
+//            scoreFromAdd = getActivity().getIntent().getStringExtra("Score");
             registNumber = getActivity().getIntent().getStringExtra("RegistrationNumber");
 
             carsRef.addValueEventListener(new ValueEventListener() {
@@ -184,8 +172,10 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
                                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                     startActivity(intent);
                                     break;
-                                case R.id.email:
-                                    showMessage(email);
+                                case R.id.cars:
+                                    Intent intent2 = new Intent(getActivity(), CarsActivity.class);
+                                    startActivity(intent2);
+                                    break;
                             }
                         }
                     }).show();
@@ -221,21 +211,20 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
 
     private void showHealthScore() {
         TubeSpeedometer speedView = getActivity().findViewById(R.id.speedView);
-
         try {
             journalRef.child(registNumber).child("HealthScore").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if (dataSnapshot.exists()) {
-                        if(scoreFromAdd != null){
-                            score = Integer.parseInt(scoreFromAdd);
-                            speedView.setSpeedAt(score);
-                        }
-                        else {
+//                        if(scoreFromAdd != null){
+//                            score = Integer.parseInt(scoreFromAdd);
+//                            speedView.setSpeedAt(score);
+//                        }
+//                        else {
                             scorestr = dataSnapshot.getValue().toString();
                             score = Integer.parseInt(scorestr);
                             speedView.setSpeedAt(score);
-                        }
+                        //}
                             speedView.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {

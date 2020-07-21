@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.Spinner;
 
 import com.exercise.caraugmentedreality.Contract.CarRegistrationContract;
 import com.exercise.caraugmentedreality.Presenter.CarRegistrationPresenter;
@@ -27,6 +28,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import butterknife.BindView;
@@ -37,27 +39,26 @@ public class CarRegistrationFragment extends BaseFragment implements CarRegistra
 
     @BindView(R.id.et_manufacturer)
     AutoCompleteTextView et_manufacturer;
-
     @BindView(R.id.et_model)
     AutoCompleteTextView et_model;
-
     @BindView(R.id.et_year)
     AutoCompleteTextView et_year;
-
     @BindView(R.id.et_variant)
     AutoCompleteTextView et_variant;
-
     @BindView(R.id.et_reg_no)
     AutoCompleteTextView et_reg_no;
-
+    @BindView(R.id.sp_capacity)
+    Spinner sp_capacity;
     @BindView(R.id.bt_continue)
     Button bt_continue;
 
+    String[] capacity = {"Tap for Engine Capacity","660 CC","800 CC","1000 CC","1300 CC","1500 CC","1600 CC","1800 CC"};
+
     private FirebaseAuth mAuth;
-    DatabaseReference userRef,carRef;
-    String uid,regNo,manufacturer,model,year,variant;
+    DatabaseReference userRef,carRef,carsRegiteredRef;
+    String uid,regNo,manufacturer,model,year,variant,engineCapacity;
 
-
+    ArrayList<String> regCarsList;
 
     public CarRegistrationFragment() {
         mPresenter = new CarRegistrationPresenter(this);
@@ -66,6 +67,7 @@ public class CarRegistrationFragment extends BaseFragment implements CarRegistra
 
         userRef = FirebaseDatabase.getInstance().getReference().child("Users");
         carRef = FirebaseDatabase.getInstance().getReference().child("Cars").child(uid);
+        carsRegiteredRef = FirebaseDatabase.getInstance().getReference().child("CarsRegistered");
     }
 
     @Override
@@ -81,6 +83,13 @@ public class CarRegistrationFragment extends BaseFragment implements CarRegistra
             String[] models = getActivity().getResources().getStringArray(R.array.models);
             String[] variants = getActivity().getResources().getStringArray(R.array.variants);
 
+            regCarsList = new ArrayList<>();
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+                    R.layout.spinner_item2,
+                    capacity);
+            adapter.setDropDownViewResource(R.layout.spinner_dropdown_item2);
+            sp_capacity.setAdapter(adapter);
+
             ArrayAdapter<String> man_adapter = new ArrayAdapter<>(getActivity(),android.R.layout.simple_list_item_1,manufacturer);
             et_manufacturer.setAdapter(man_adapter);
 
@@ -93,12 +102,48 @@ public class CarRegistrationFragment extends BaseFragment implements CarRegistra
         bt_continue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(et_manufacturer.getText().toString().isEmpty() && et_reg_no.getText().toString().isEmpty() && et_model.getText().toString().isEmpty()
-                        && et_year.getText().toString().isEmpty() && et_variant.getText().toString().isEmpty()){
-                    showMessage("Fill all fields first.");
+                if(et_reg_no.getText().toString().isEmpty()){
+                    et_reg_no.setError("Registration Number required.");
+                }
+                else if(et_manufacturer.getText().toString().isEmpty()){
+                    et_manufacturer.setError("Manufacturer required.");
+                }
+                else if( et_model.getText().toString().isEmpty()){
+                    et_model.setError("Model required.");
+                }
+                else if(et_year.getText().toString().isEmpty()){
+                    et_year.setError("Model Year required.");
+                }
+                else if(et_variant.getText().toString().isEmpty()){
+                    et_variant.setError("Variant required.");
+                }
+                else if(sp_capacity.getSelectedItemPosition()==0){
+                    showMessage("Select Engine Capacity");
                 }
                 else{
-                    saveToDB();
+                    carsRegiteredRef.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                boolean flag =false;
+//                                if(dataSnapshot.exists())
+                                for(DataSnapshot regNoSnapshot: dataSnapshot.getChildren()){
+                                    if(et_reg_no.getText().toString().equals(regNoSnapshot.getValue().toString())){
+                                        et_reg_no.setError("Reg No already exists");
+                                        flag = true;
+                                        break;
+                                    }
+                                }
+                                if(!flag){
+                                    saveToDB();
+                                }
+                                //Aur agr nae para howa tou saveToDB() method call ho jae. Lekin puri array search honay k baad
+                            }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
                 }
             }
         });
@@ -112,7 +157,7 @@ public class CarRegistrationFragment extends BaseFragment implements CarRegistra
 
     @Override
     public void showMessage(String message) {
-//        showToastMessage(message);
+        showToastMessage(message);
     }
 
     @Override
@@ -132,6 +177,20 @@ public class CarRegistrationFragment extends BaseFragment implements CarRegistra
         model = et_model.getText().toString();
         year = et_year.getText().toString();
         variant = et_variant.getText().toString();
+        engineCapacity = sp_capacity.getSelectedItem().toString();
+
+        String key = carsRegiteredRef.push().getKey();
+        carsRegiteredRef.child(key).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(!dataSnapshot.exists())
+                    carsRegiteredRef.child(key).setValue(regNo);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         userRef.child(uid).addValueEventListener(new ValueEventListener() {
             @Override
@@ -144,6 +203,7 @@ public class CarRegistrationFragment extends BaseFragment implements CarRegistra
                         carMap.put("Model",model);
                         carMap.put("Year",year);
                         carMap.put("Variant",variant);
+                        carMap.put("EngineCapacity",engineCapacity);
                     carRef.child(regNo).updateChildren(carMap).addOnCompleteListener(new OnCompleteListener() {
                         @Override
                         public void onComplete(@NonNull Task task) {
@@ -156,6 +216,30 @@ public class CarRegistrationFragment extends BaseFragment implements CarRegistra
                             }
                         }
                     });
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    @Override
+    public void getRegNo() {
+
+    }
+
+    @Override
+    public void moveToHomeScreen() {
+        Intent intent = new Intent(getActivity(), HomeActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+}
+//
+//
+
 //                    carRef.addChildEventListener(new ChildEventListener() {
 //                        @Override
 //                        public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
@@ -183,28 +267,6 @@ public class CarRegistrationFragment extends BaseFragment implements CarRegistra
 //
 //                        }
 //                    });
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }
-
-    @Override
-    public void getRegNo() {
-
-    }
-
-    @Override
-    public void moveToHomeScreen() {
-        Intent intent = new Intent(getActivity(), HomeActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-    }
-}
 
 
 //if(registrationNo != null) {

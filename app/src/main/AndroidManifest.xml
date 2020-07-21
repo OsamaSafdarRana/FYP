@@ -19,7 +19,7 @@
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".View.Activity.EngineGuideActivity"></activity>
         <activity android:name=".View.Activity.TroublshootOptionsActivity" />
-        <activity android:name=".View.Activity.SelectCarActivity" />
+        <activity android:name=".View.Activity.CarsActivity" />
         <activity android:name=".View.Activity.CarRegistrationActivity" />
         <activity android:name=".View.Activity.NotificationActivity" />
         <activity android:name=".View.Activity.MenuActivity" />
