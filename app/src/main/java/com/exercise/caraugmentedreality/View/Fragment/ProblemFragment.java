@@ -46,15 +46,15 @@ public class ProblemFragment extends BaseFragment implements ProblemContract.Vie
         if(savedInstanceState == null) {
             problem = getActivity().getIntent().getStringExtra("problem");
             tv_problem_statement.setText(problem);
-            if (problem.contains("Problematic Component: Radiator")) {
+            if (problem.equals("Problematic Component: Radiator")) {
                 iv_problem.setImageDrawable(getResources().getDrawable(R.drawable.ic_radiator_heat));
                 tv_problem_statement_details.setText(R.string.text_radiator_details);
             }
-            else if (problem.contains("Problematic Component: Battery")) {
+            else if (problem.equals("Problematic Component: Battery")) {
                 iv_problem.setImageDrawable(getResources().getDrawable(R.drawable.ic_battery));
                 tv_problem_statement_details.setText(R.string.text_battery_details);
             }
-            else if (problem.contains("Problematic Component: Engine Head")) {
+            else if (problem.equals("Problematic Component: Engine Head")) {
                 iv_problem.setImageDrawable(getResources().getDrawable(R.drawable.ic_engine));
                 tv_problem_statement_details.setText(R.string.text_head_details);
             }
@@ -81,6 +81,12 @@ public class ProblemFragment extends BaseFragment implements ProblemContract.Vie
                 bt_implement.setText("Troubleshoot Again");
                 tv_problem_statement.setText(problem);
                 tv_problem_statement_details.setText(R.string.text_missing_details);
+            }
+            else if(problem.equals("Your car is heating up.")){
+                iv_problem.setVisibility(View.GONE);
+                bt_implement.setText("Troubleshoot Again");
+                tv_problem_statement.setText(problem);
+                tv_problem_statement_details.setText(R.string.text_heating_details);
             }
             else {
                 iv_problem.setVisibility(View.GONE);
